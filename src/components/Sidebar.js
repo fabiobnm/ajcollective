@@ -1,0 +1,115 @@
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+const Sidebar = () => {
+  const router = useRouter();
+  const isHome = router.pathname === '/';
+  const isCreativesPage = router.pathname === '/creatives';
+  const isMoodFilmsPage = router.pathname === '/moodfilms';
+  const isContactsPage = router.pathname === '/contacts';
+  const isWinningJobPage = router.pathname === '/winningjobs';
+
+
+
+
+  return (
+    <aside style={styles.sidebar}>
+      <ul style={styles.ul}>
+        <li style={styles.left}>
+          <Link href="/" style={styles.linkHome}>AJ COLLECTIVE</Link>
+
+          {/* Visualizza questo testo solo se siamo nella home */}
+          {isHome && (
+            <Link href="/" style={styles.link2}>
+              Creative Research. Directors Interpretation. Commercial -
+              Film - Music Video Treatments. Creative Writing. Mood Films.
+            </Link>
+          )}
+        </li>
+
+        <li style={isCreativesPage ? styles.otherPage : styles.other}>
+          <Link href="/creatives" style={styles.link}>P01</Link>
+          <Link href="/creatives" style={styles.link}>Creatives</Link>
+        </li>
+        <li style={isMoodFilmsPage ? styles.otherPage : styles.other}>
+          <Link href="/moodfilms" style={styles.link}>P02</Link>
+          <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
+        </li>
+        <li style={isWinningJobPage ? styles.otherPage : styles.other}>        
+          <Link href="/winningjobs" style={styles.linkAbout}>P03</Link>
+          <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
+        </li>
+        <li style={isContactsPage ? styles.otherPage : styles.other}>
+          <Link href="/contacts" style={styles.linkAbout}>P04</Link>
+          <Link href="/contacts" style={styles.link}>Contacts</Link>
+        </li>
+      </ul>
+    </aside>
+  );
+};
+
+const styles = {
+  sidebar: {
+    width: '100%',
+    backgroundColor: 'white',
+    paddingLeft: '45px',
+    paddingRight: '45px',
+    paddingTop: '20px',
+    position: 'fixed',
+    top: '0%',
+  },
+  ul: {
+    listStyleType: 'none',
+    padding: 0,
+    display: 'flex',
+    width: '100%',
+  },
+  left: {
+    width: '25%',
+  },
+  other: {
+    width: '16.66%',
+  },
+  otherPage:{
+    width: '16.66%',
+    paddingBottom: '15px',
+    borderBottom: '1px solid black',
+  },
+  otherAbout: {
+    width: '25%',
+  },
+  linkHome: {
+    display: 'block',
+    padding: '0',
+    textDecoration: 'none',
+    color: 'black',
+    fontSize: '15px',
+  },
+  link: {
+    display: 'block',
+    padding: '0',
+    textDecoration: 'none',
+    color: 'black',
+    fontSize: '15px',
+  },
+  link2: {
+    display: 'block',
+    width: '88%',
+    lineHeight: '1',
+    padding: '0',
+    textDecoration: 'none',
+    color: 'black',
+    fontSize: '15px',
+  },
+  linkAbout: {
+    display: 'block',
+    padding: '0',
+    textDecoration: 'none',
+    color: 'black',
+    fontSize: '15px',
+    width: '25%',
+  },
+};
+
+export default Sidebar;
