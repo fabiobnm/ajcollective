@@ -53,7 +53,7 @@ export default function Home() {
   };
 
   return (
-    <main style={{ marginTop: '125px', background: '' }}>
+    <main style={{ marginTop: '180px', background: '' }}>
       {fullscreenImageIndex !== null && ( // Mostra l'overlay solo se fullscreenImageIndex è impostato
         <div
           style={{

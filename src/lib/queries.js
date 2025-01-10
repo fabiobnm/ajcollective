@@ -9,6 +9,14 @@ export const GET_POSTS = gql`
   }
 }
 `;
+export const GET_POSTSHomePage = gql`
+query{
+ homePages{
+  gallery{
+    url}
+}
+}
+`;
 
 export const GET_POSTSOrderCreatives = gql`
 query{
