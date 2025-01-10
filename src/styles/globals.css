@@ -38,6 +38,11 @@ body {
   margin-bottom: 70px;
   color:black
 }
+::selection {
+  color: white; /* Colore del testo selezionato */
+  background: rgb(228, 106, 212); /* Colore di sfondo della selezione */
+}
+
 
 /* Nascondi l'immagine magicGif di default */
 .creative-header .magicGif {

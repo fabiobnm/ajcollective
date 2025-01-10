@@ -124,6 +124,7 @@ export default function Home() {
         {data.creativesOrders[0].creative.map((creative, creativeIndex) => (
           <div key={creative.id} style={{ height: 'auto', width: '100vw' }}>
             <h1
+              className='nameCreative'
               onClick={() => handleClick(creativeIndex)}
               onMouseEnter={() => setHoveredCreativeId(creative.id)}
               onMouseLeave={() => setHoveredCreativeId(null)}
