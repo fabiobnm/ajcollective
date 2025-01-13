@@ -13,7 +13,9 @@
     --foreground: #ededed;
   }
 }
-
+img{
+  max-width: none;
+}
 body {
   color: black;
   background: var(--background);

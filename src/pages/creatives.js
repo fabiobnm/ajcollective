@@ -176,8 +176,7 @@ export default function Home() {
                   onClick={() => handleImageClick(index)} // Imposta l'indice per il fullscreen
                   style={{
                     height: '300px',
-                    maxWidth: 'fit-content',
-                    width: 'fit-content',
+                    width: 'auto',
                     marginBottom: '0px',
                     cursor: 'pointer', // Mostra che l'immagine è cliccabile
                   }}
