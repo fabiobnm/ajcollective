@@ -13,7 +13,7 @@ const Sidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Stato per il menu mobile
 
   return (
-    <aside style={styles.sidebar}>
+    <aside className='sideBar'>
       {/* Menu Desktop */}
       <ul className="headerDesktop" style={styles.ul}>
         <li style={styles.left}>
