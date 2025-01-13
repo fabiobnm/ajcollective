@@ -176,6 +176,7 @@ height: 45vh;
   }
   .divRate{
     display: block;
+    width: 75%;
   }
   .contactFirstBlock{
     width: auto;
@@ -210,6 +211,10 @@ height: 45vh;
 
     .rateColonne{
       justify-content: space-around;
+    }
+
+    .magicGif{
+      visibility: hidden;
     }
   
 
