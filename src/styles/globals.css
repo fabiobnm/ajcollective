@@ -30,16 +30,18 @@ body {
   font-style: normal;
 }
 
-h1{
+h1, p{ 
   color: black;
+  font-size: 12px;
   }
 
 .ajImg{
   position: fixed;
   bottom: 10px;
+  width: 100%;
 }
 .contactFirstBlock{
-  width: 30vW;
+  width: 25vW;
   padding-left: 45px;
   margin-bottom: 70px;
   color:black

@@ -10,12 +10,17 @@ export const GET_POSTS = gql`
 }
 `;
 export const GET_POSTSHomePage = gql`
-query{
- homePages{
-  gallery{
-    url}
+ {
+  homePages{
+    gallery{
+      url
+    }
+    headerText{
+      html
+    }
+  }
 }
-}
+
 `;
 
 export const GET_POSTSOrderCreatives = gql`

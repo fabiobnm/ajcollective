@@ -21,10 +21,12 @@ const Sidebar = () => {
 
           {/* Visualizza questo testo solo se siamo nella home */}
           {isHome && (
-            <Link href="/" style={styles.link2}>
+            <div style={{width:'85%'}}>
+            <p style={styles.link2}>
               Creative Research. Directors Interpretation. Commercial -
               Film - Music Video Treatments. Creative Writing. Mood Films.
-            </Link>
+            </p>
+            </div>
           )}
         </li>
 
@@ -37,11 +39,11 @@ const Sidebar = () => {
           <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
         </li>
         <li style={isWinningJobPage ? styles.otherPage : styles.other}>
-          <Link href="/winningjobs" style={styles.linkAbout}>P03</Link>
+          <Link href="/winningjobs" style={styles.link}>P03</Link>
           <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
         </li>
         <li style={isContactsPage ? styles.otherPage : styles.other}>
-          <Link href="/contacts" style={styles.linkAbout}>P04</Link>
+          <Link href="/contacts" style={styles.link}>P04</Link>
           <Link href="/contacts" style={styles.link}>Contacts</Link>
         </li>
       </ul>
@@ -70,11 +72,11 @@ const Sidebar = () => {
               <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
             </li>
             <li style={isWinningJobPage ? styles.otherPage : styles.other}>
-              <Link href="/winningjobs" style={styles.linkAbout}>P03</Link>
+              <Link href="/winningjobs" style={styles.link}>P03</Link>
               <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
             </li>
             <li style={isContactsPage ? styles.otherPage : styles.other}>
-              <Link href="/contacts" style={styles.linkAbout}>P04</Link>
+              <Link href="/contacts" style={styles.link}>P04</Link>
               <Link href="/contacts" style={styles.link}>Contacts</Link>
             </li>
           </ul>
@@ -116,14 +118,17 @@ const styles = {
     padding: '0',
     textDecoration: 'none',
     color: 'black',
-    fontSize: '15px',
+    fontSize: '12px',
   },
   link: {
     display: 'block',
     padding: '0',
     textDecoration: 'none',
     color: 'black',
-    fontSize: '15px',
+    fontSize: '12px',
+  },
+  link2: {
+    fontSize: '12px',
   },
   mobileButton: {
     background: 'none',
