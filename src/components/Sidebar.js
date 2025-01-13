@@ -97,7 +97,13 @@ const styles = {
     top: '0%',
   },
   pink:{
-    background:'pink'
+    width: '100%',
+    paddingLeft: '45px',
+    paddingRight: '45px',
+    paddingTop: '20px',
+    position: 'fixed',
+    top: '0%',
+    background:'#ffa3d7'
   },
   ul: {
     listStyleType: 'none',
