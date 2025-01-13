@@ -201,4 +201,16 @@ height: 45vh;
     padding-right: 1rem;   
 }
 
+.contactSecondBlock{
+  height: auto;
+  }
+  .contactThirdBlock{
+    height: auto;
+    }
+
+    .rateColonne{
+      justify-content: space-around;
+    }
+  
+
 }

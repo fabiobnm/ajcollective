@@ -71,7 +71,7 @@ export default function Home() {
         </div>
 
         
-        <div style={{paddingTop:'10px',borderTop:'1px solid black',height:'50vH'}}>
+        <div style={{paddingTop:'10px',borderTop:'1px solid black',paddingBottom:'80px'}}>
         <div className='normeFooter'>
         <h1 className='voiceName'>cancellation Fees</h1>
             <p className='footerVoice'>{data.contacts[0].cancellationFees}</p>
