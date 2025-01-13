@@ -38,12 +38,9 @@ const Sidebar = () => {
           <Link href="/moodfilms" style={styles.link}>P02</Link>
           <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
         </li>
-        <li style={isWinningJobPage ? styles.otherPage : styles.other}>
-          <Link href="/winningjobs" style={styles.link}>P03</Link>
-          <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
-        </li>
+       
         <li style={isContactsPage ? styles.otherPage : styles.other}>
-          <Link href="/contacts" style={styles.link}>P04</Link>
+          <Link href="/contacts" style={styles.link}>P03</Link>
           <Link href="/contacts" style={styles.link}>Contacts</Link>
         </li>
       </ul>
@@ -71,12 +68,9 @@ const Sidebar = () => {
               <Link href="/moodfilms" style={styles.link}>P02</Link>
               <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
             </li>
-            <li style={isWinningJobPage ? styles.otherPage : styles.other}>
-              <Link href="/winningjobs" style={styles.link}>P03</Link>
-              <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
-            </li>
+           
             <li style={isContactsPage ? styles.otherPage : styles.other}>
-              <Link href="/contacts" style={styles.link}>P04</Link>
+              <Link href="/contacts" style={styles.link}>P03</Link>
               <Link href="/contacts" style={styles.link}>Contacts</Link>
             </li>
           </ul>

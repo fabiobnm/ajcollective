@@ -35,7 +35,7 @@ export default function Home() {
         <div className='normeFooter'>
         <h1 className='voiceName'>2024 rates</h1>
             <div className='divRate'>
-                <div className="rateColonne" dangerouslySetInnerHTML={{ __html: data.contacts[0].firstRate.html }}></div>
+                <div className="rateColonne" dangerouslySetInnerHTML={{ __html: data.contacts[0].firstRate.markdown }}></div>
                 <div className="rateColonne" dangerouslySetInnerHTML={{ __html: data.contacts[0].secondRate.html }}></div>
                 <div className="rateColonne" dangerouslySetInnerHTML={{ __html: data.contacts[0].thirdRate.html }}></div>              
                 <div className="rateColonne" dangerouslySetInnerHTML={{ __html: data.contacts[0].fourthRate.html }}></div>

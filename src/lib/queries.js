@@ -52,12 +52,15 @@ export const GET_POSTScontacts = gql`
     html 
     raw}
     firstRate{
+    markdown
     html 
     raw}
     secondRate{
+    markdown
     html 
     raw}
     thirdRate{
+    markdown
     html 
     raw}
     fourthRate{
