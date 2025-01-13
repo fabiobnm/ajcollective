@@ -27,14 +27,7 @@ export default function Home() {
 
   return (
     <main style={{ marginTop: '125px' }}>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: '1%',
-        paddingLeft: '45px',
-        paddingRight: '45px',
-        color: 'black'
-      }}>
+      <div className='moodFilmsList'>
         {data.moodFilms.map((moodFilms) => (
           <div key={moodFilms.id} style={{ marginBottom: '20px' }}>
             <img

@@ -122,6 +122,14 @@ h1{
 .divRate{
   display: contents;
 }
+.moodFilmsList{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1%;
+  padding-left: 45px;
+  padding-right: 45px;
+  color: black;
+}
 /* Media Query per smartphone (max-width 767px) */
 @media screen and (max-width: 767px) {
   .headerMobile{
@@ -143,6 +151,9 @@ h1{
 
   .footerVoice{
     margin-top: 40px;
+  }
+  .moodFilmsList{
+    grid-template-columns: repeat(1, 1fr);
   }
 
 }
