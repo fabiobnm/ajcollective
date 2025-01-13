@@ -49,7 +49,7 @@ export default function Home() {
         
         <div style={{paddingTop:'10px',borderTop:'1px solid black'}}>
         <div className='normeFooter'>
-        <h1 className='voiceName'>cancellationFees</h1>
+        <h1 className='voiceName'>cancellation Fees</h1>
             <p className='footerVoice'>{data.contacts[0].cancellationFees}</p>
           </div> 
 
