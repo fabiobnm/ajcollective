@@ -188,6 +188,8 @@ export default function Home() {
         ))}
       </div>
       <Sidebar />
+      <img className="ajImg2" src="/ajImage.png" />
+
     </main>
   );
 }

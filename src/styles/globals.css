@@ -40,6 +40,12 @@ h1, p{
   bottom: 10px;
   width: 100%;
 }
+.ajImg2{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 20%;
+}
 .contactFirstBlock{
   width: 25vW;
   padding-left: 45px;
