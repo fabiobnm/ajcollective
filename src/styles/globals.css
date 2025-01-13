@@ -104,7 +104,6 @@ height: 45vh;
 
 .sideBar{
     width: 100%;
-    background-color:white;
     padding-left: 45px;
     padding-right: 45px;
     padding-top: 20px;
@@ -199,7 +198,7 @@ height: 45vh;
   }
   .sideBar{
     padding-left: 1rem;
-    padding-right: 1rem;   
+    padding-right: 1rem;  
 }
 
 .contactSecondBlock{
@@ -216,6 +215,11 @@ height: 45vh;
     .magicGif{
       visibility: hidden;
     }
+
+  .moodFilmsList{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
   
 
 }

@@ -13,7 +13,7 @@ const Sidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Stato per il menu mobile
 
   return (
-    <aside className='sideBar' style={isContactsPage ? styles.pink : styles.sidebar}>
+    <aside className='sideBar' style={isContactsPage ? styles.pink : styles.white}>
       {/* Menu Desktop */}
       <ul className="headerDesktop" style={styles.ul}>
         <li style={styles.left}>
@@ -89,22 +89,10 @@ const Sidebar = () => {
 };
 
 const styles = {
-  sidebar: {
-    width: '100%',
-    backgroundColor: 'white',
-    paddingLeft: '45px',
-    paddingRight: '45px',
-    paddingTop: '20px',
-    position: 'fixed',
-    top: '0%',
+  white:{
+    background:'white'
   },
   pink:{
-    width: '100%',
-    paddingLeft: '45px',
-    paddingRight: '45px',
-    paddingTop: '20px',
-    position: 'fixed',
-    top: '0%',
     background:'#ffa3d7'
   },
   ul: {
