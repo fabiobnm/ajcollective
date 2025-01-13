@@ -33,7 +33,7 @@ export default function Home() {
             <img
               src={moodFilms.cover.url}
               alt={moodFilms.title}
-              style={{ width: '100%', height: 'fit-content', marginBottom: '10px', cursor: 'pointer' }}
+              style={{ width: '100%', height: 'auto', marginBottom: '10px', cursor: 'pointer' }}
               onClick={() => handleImageClick(moodFilms.vimeoUrl)} // Passa l'URL Vimeo
             />
             <h1>{moodFilms.title}</h1>
