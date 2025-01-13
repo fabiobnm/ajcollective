@@ -62,6 +62,9 @@ height: 45vh;
   height: 45vh;
   }
 
+.enquire{
+  font-size: 12px;
+}
 ::selection {
   color: white; /* Colore del testo selezionato */
   background: rgb(228, 106, 212); /* Colore di sfondo della selezione */
