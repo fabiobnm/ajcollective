@@ -178,6 +178,7 @@ export default function Home() {
                     height: '300px',
                     width: 'auto',
                     marginBottom: '0px',
+                    paddingBottom:'30px',
                     cursor: 'pointer', // Mostra che l'immagine è cliccabile
                   }}
                 />
