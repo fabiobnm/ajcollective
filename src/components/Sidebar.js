@@ -48,6 +48,14 @@ const Sidebar = () => {
       {/* Menu Mobile */}
       <div className="headerMobile">
         <Link href="/" style={styles.linkHome}>AJ COLLECTIVE</Link>
+        {isHome && (
+            <div style={{width:'85%'}}>
+            <p style={styles.link2}>
+              Creative Research. Directors Interpretation. Commercial -
+              Film - Music Video Treatments. Creative Writing. Mood Films.
+            </p>
+            </div>
+          )}
 
         {/* Bottone per aprire/chiudere il menu */}
         <button
