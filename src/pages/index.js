@@ -41,7 +41,7 @@ export default function Home() {
       </div>
 
       <Sidebar />
-      <img className="ajImg" src="/ajImage.png" />
+      <img className="ajImg" src="/AJCOLLECTIVE_LOGO.png" />
     </main>
   );
 }

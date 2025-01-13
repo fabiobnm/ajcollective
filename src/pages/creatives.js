@@ -122,7 +122,12 @@ export default function Home() {
 
       <div style={{ display: 'block', color: 'black', width: 'max-content', paddingLeft: '0px',paddingBottom:'140px' }}>
         {data.creativesOrders[0].creative.map((creative, creativeIndex) => (
-          <div key={creative.id} style={{ height: 'auto', width: '100vw' }}>
+          <div 
+          style={{
+            paddingBottom: selectedCreative === creativeIndex ? '30px' : '0',
+            height: 'auto', width: '100vw' ,transition:'padding-bottom 0.4s'
+          }}
+          key={creative.id}>
             <h1
               className='nameCreative'
               onClick={() => handleClick(creativeIndex)}
@@ -163,7 +168,6 @@ export default function Home() {
                 gap: '0px',
                 columnGap: '5px',
                 overflowX: 'scroll',
-                scrollbarWidth: 'thin',
               }}
               className="custom-scroll"
             >
@@ -178,7 +182,7 @@ export default function Home() {
                     height: '300px',
                     width: 'auto',
                     marginBottom: '0px',
-                    paddingBottom:'30px',
+                    paddingBottom:'15px',
                     cursor: 'pointer', // Mostra che l'immagine è cliccabile
                   }}
                 />
@@ -188,7 +192,7 @@ export default function Home() {
         ))}
       </div>
       <Sidebar />
-      <img className="ajImg2" src="/ajImage.png" />
+      <img className="ajImg2" src="/AJCOLLECTIVE_LOGO.png" />
 
     </main>
   );
