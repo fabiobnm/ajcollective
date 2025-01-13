@@ -42,8 +42,16 @@ query{
 export const GET_POSTScontacts = gql`
 {
   contacts {
-    id
+      id
     info
+    firstRate
+    secondRate
+    thirdRate
+    fourthRate
+    yoyo{html}
+    cancellationFees
+    hours
+    payment
     
   }
 }

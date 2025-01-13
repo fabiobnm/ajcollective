@@ -68,7 +68,7 @@ const styles = {
     paddingLeft: '45px',
     paddingRight: '45px',
     paddingTop: '20px',
-    position: 'fixed',
+    position: 'absolute',
     bottom: '0%',
   },
   ul: {

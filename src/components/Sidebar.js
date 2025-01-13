@@ -15,10 +15,10 @@ const Sidebar = () => {
 
   return (
     <aside style={styles.sidebar}>
-      <ul style={styles.ul}>
+      <ul className='headerDesktop' style={styles.ul}>
         <li style={styles.left}>
-          <Link href="/" style={styles.linkHome}>AJ COLLECTIVE</Link>
-
+         <Link href="/" style={styles.linkHome}>AJ COLLECTIVE</Link>
+ 
           {/* Visualizza questo testo solo se siamo nella home */}
           {isHome && (
             <Link href="/" style={styles.link2}>
@@ -45,6 +45,28 @@ const Sidebar = () => {
           <Link href="/contacts" style={styles.link}>Contacts</Link>
         </li>
       </ul>
+     
+     <div className='headerMobile'>
+     <Link href="/" style={styles.linkHome}>AJ COLLECTIVE</Link>
+     <ul>
+     <li style={isCreativesPage ? styles.otherPage : styles.other}>
+          <Link href="/creatives" style={styles.link}>P01</Link>
+          <Link href="/creatives" style={styles.link}>Creatives</Link>
+        </li>
+        <li style={isMoodFilmsPage ? styles.otherPage : styles.other}>
+          <Link href="/moodfilms" style={styles.link}>P02</Link>
+          <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
+        </li>
+        <li style={isWinningJobPage ? styles.otherPage : styles.other}>        
+          <Link href="/winningjobs" style={styles.linkAbout}>P03</Link>
+          <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
+        </li>
+        <li style={isContactsPage ? styles.otherPage : styles.other}>
+          <Link href="/contacts" style={styles.linkAbout}>P04</Link>
+          <Link href="/contacts" style={styles.link}>Contacts</Link>
+        </li>
+      </ul>
+     </div>
     </aside>
   );
 };

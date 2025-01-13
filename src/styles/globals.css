@@ -28,6 +28,10 @@ body {
   font-style: normal;
 }
 
+h1{
+  color: black;
+  }
+
 .ajImg{
   position: fixed;
   bottom: 10px;
@@ -84,4 +88,45 @@ body {
 .custom-scroll {
   scrollbar-color: #ff0000 #e0e0e0; /* Colore del thumb e del track */
   scrollbar-width: thin;
+}
+
+.headerMobile{
+  display: none;
+}
+.headerDesktop{
+  display: flex;
+}
+
+.footerVoice{
+  width: 70vW;
+  color:black
+}
+
+.normeFooter{
+  padding-left: 45px;
+  padding-right: 45px;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.voiceName{
+  width: 25%;
+  text-transform: uppercase;
+}
+
+.rateColonne{
+  color:black;
+  width: 16.66%;
+  padding-right: 10px;
+}
+/* Media Query per smartphone (max-width 767px) */
+@media screen and (max-width: 767px) {
+  .headerMobile{
+    display: block;
+  }
+  .headerDesktop{
+    display: none !important;
+  }
+  
+
 }
