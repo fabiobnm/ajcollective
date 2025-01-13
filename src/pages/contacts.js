@@ -24,9 +24,11 @@ export default function Home() {
   };
 
   return (
-    <main style={{ marginTop: '125px', background: '#ffa3d7' }}>
+    <main style={{ marginTop: '0px', background: '#ffa3d7' }}>
               <Sidebar />
-              <div className="contactFirstBlock" dangerouslySetInnerHTML={{ __html: data.contacts[0].info.html }}></div>
+              <div className="contactFirstBlock" >
+              <div dangerouslySetInnerHTML={{ __html: data.contacts[0].info.html }}></div>
+              </div>
                <div style={{ display: 'block', color: 'black', width: 'max-content',  }}>
              </div>
 
