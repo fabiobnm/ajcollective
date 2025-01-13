@@ -162,7 +162,7 @@ export default function Home() {
                 overflow: 'hidden',
                 transition: 'max-height 0.5s',
                 marginTop: '10px',
-                display: 'grid',
+                display: 'flex',
                 gridTemplateRows: 'repeat(1, auto)',
                 gridAutoFlow: 'column',
                 gap: '0px',
