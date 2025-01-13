@@ -37,28 +37,28 @@ export default function Home() {
             <div className='divRate'>
                 
                 <div className="rateColonne">
-                   <div dangerouslySetInnerHTML={{ __html: data.contacts[0].firstRate.html }}></div>
+                   <div style={{width:'90%'}} dangerouslySetInnerHTML={{ __html: data.contacts[0].firstRate.html }}></div>
                 <div>
                 <a className='enquire' href="mailto:example@example.com">Enquire</a>
                 </div>
                 </div>
 
                 <div className="rateColonne">
-                   <div dangerouslySetInnerHTML={{ __html: data.contacts[0].firstRate.html }}></div>
+                   <div style={{width:'90%'}} dangerouslySetInnerHTML={{ __html: data.contacts[0].firstRate.html }}></div>
                 <div>
                 <a className='enquire' href="mailto:example@example.com">Enquire</a>
                 </div>
                 </div>
 
                 <div className="rateColonne">
-                   <div dangerouslySetInnerHTML={{ __html: data.contacts[0].secondRate.html }}></div>
+                   <div style={{width:'90%'}} dangerouslySetInnerHTML={{ __html: data.contacts[0].secondRate.html }}></div>
                 <div>
                 <a className='enquire' href="mailto:example@example.com">Enquire</a>
                 </div>
                 </div>
 
                 <div className="rateColonne">
-                   <div dangerouslySetInnerHTML={{ __html: data.contacts[0].thirdRate.html }}></div>
+                   <div style={{width:'90%'}} dangerouslySetInnerHTML={{ __html: data.contacts[0].thirdRate.html }}></div>
                 <div>
                  <a className='enquire' href="mailto:example@example.com">Enquire</a>
                    </div>

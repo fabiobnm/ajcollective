@@ -150,6 +150,10 @@ height: 45vh;
   color:black;
   width: 16.66%;
   padding-right: 10px;
+  height: 40vH;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .divRate{
   display: contents;
