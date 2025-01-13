@@ -120,7 +120,7 @@ export default function Home() {
         </div>
       )}
 
-      <div style={{ display: 'block', color: 'black', width: 'max-content', paddingLeft: '0px' }}>
+      <div style={{ display: 'block', color: 'black', width: 'max-content', paddingLeft: '0px',paddingBottom:'140px' }}>
         {data.creativesOrders[0].creative.map((creative, creativeIndex) => (
           <div key={creative.id} style={{ height: 'auto', width: '100vw' }}>
             <h1
