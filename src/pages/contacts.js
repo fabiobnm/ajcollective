@@ -29,11 +29,9 @@ export default function Home() {
               <div className="contactFirstBlock" >
               <div dangerouslySetInnerHTML={{ __html: data.contacts[0].info.html }}></div>
               </div>
-               <div style={{ display: 'block', color: 'black', width: 'max-content',  }}>
-             </div>
-
+        
        
-        <div style={{paddingTop:'10px',borderTop:'1px solid black'}}>
+        <div className="contactSecondBlock" style={{paddingTop:'10px',borderTop:'1px solid black'}}>
         <div className='normeFooter'>
         <h1 className='voiceName'>2024 rates</h1>
             <div className='divRate'>
@@ -49,7 +47,7 @@ export default function Home() {
         </div>
 
         
-        <div style={{paddingTop:'10px',borderTop:'1px solid black'}}>
+        <div style={{paddingTop:'10px',borderTop:'1px solid black',height:'50vH'}}>
         <div className='normeFooter'>
         <h1 className='voiceName'>cancellation Fees</h1>
             <p className='footerVoice'>{data.contacts[0].cancellationFees}</p>

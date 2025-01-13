@@ -49,10 +49,19 @@ h1, p{
 .contactFirstBlock{
   width: 25vW;
   height: 50vh;
+  display: flex;
+  align-items: end;
   padding-left: 45px;
   margin-bottom: 70px;
-  color:black
+  color:black;
 }
+.contactSecondBlock{
+height: 45vh;
+}
+.contactThirdBlock{
+  height: 45vh;
+  }
+
 ::selection {
   color: white; /* Colore del testo selezionato */
   background: rgb(228, 106, 212); /* Colore di sfondo della selezione */
