@@ -50,7 +50,7 @@ h1, p{
   width: 25vW;
   height: 50vh;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   padding-left: 45px;
   margin-bottom: 70px;
   color:black;
