@@ -15,7 +15,7 @@
 }
 
 body {
-  color: var(--foreground);
+  color: black;
   background: var(--background);
   font-family: MyFont;
 }
@@ -71,11 +71,11 @@ h1{
 }
 
 .custom-scroll::-webkit-scrollbar-track {
-  background: red; /* Colore di sfondo del track */
+  background:#ff000000 #e0e0e0;; /* Colore di sfondo del track */
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
-  background-color: #ff0000; /* Colore del thumb */
+  background-color: #ff000000 #e0e0e0;; /* Colore del thumb */
   border-radius: 10px; /* Arrotonda gli angoli del thumb */
 }
 
@@ -86,7 +86,7 @@ h1{
 
 /* Stili per Firefox */
 .custom-scroll {
-  scrollbar-color: #ff0000 #e0e0e0; /* Colore del thumb e del track */
+  scrollbar-color:#ff000000 #e0e0e0;; /* Colore del thumb e del track */
   scrollbar-width: thin;
 }
 
@@ -119,6 +119,9 @@ h1{
   width: 16.66%;
   padding-right: 10px;
 }
+.divRate{
+  display: contents;
+}
 /* Media Query per smartphone (max-width 767px) */
 @media screen and (max-width: 767px) {
   .headerMobile{
@@ -127,6 +130,19 @@ h1{
   .headerDesktop{
     display: none !important;
   }
-  
+  .rateColonne{
+    width: auto;
+    margin-bottom: 20px;
+  }
+  .divRate{
+    display: block;
+  }
+  .contactFirstBlock{
+    width: auto;
+  }
+
+  .footerVoice{
+    margin-top: 40px;
+  }
 
 }

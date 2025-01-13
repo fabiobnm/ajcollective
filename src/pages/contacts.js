@@ -26,20 +26,20 @@ export default function Home() {
   return (
     <main style={{ marginTop: '125px', background: '' }}>
               <Sidebar />
-
-       <div className='contactFirstBlock'>{data.contacts[0].info}</div>
-      <div style={{ display: 'block', color: 'black', width: 'max-content',  }}>
+              <div className="contactFirstBlock" dangerouslySetInnerHTML={{ __html: data.contacts[0].info.html }}></div>
+               <div style={{ display: 'block', color: 'black', width: 'max-content',  }}>
              </div>
 
        
         <div style={{paddingTop:'10px',borderTop:'1px solid black'}}>
         <div className='normeFooter'>
         <h1 className='voiceName'>2024 rates</h1>
-            <div style={{display:'contents'}}>
-                <div className='rateColonne'>{data.contacts[0].firstRate}</div>
-                <div className='rateColonne'>{data.contacts[0].secondRate}</div>
-                <div className='rateColonne'>{data.contacts[0].thirdRate}</div>                
-                <div className='rateColonne'>{data.contacts[0].yoyo.html}</div>                
+            <div className='divRate'>
+                <div className="rateColonne" dangerouslySetInnerHTML={{ __html: data.contacts[0].firstRate.html }}></div>
+                <div className="rateColonne" dangerouslySetInnerHTML={{ __html: data.contacts[0].secondRate.html }}></div>
+                <div className="rateColonne" dangerouslySetInnerHTML={{ __html: data.contacts[0].thirdRate.html }}></div>              
+                <div className="rateColonne" dangerouslySetInnerHTML={{ __html: data.contacts[0].fourthRate.html }}></div>
+            
 
             </div>
           </div> 

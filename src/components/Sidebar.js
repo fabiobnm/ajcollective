@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -10,15 +10,15 @@ const Sidebar = () => {
   const isContactsPage = router.pathname === '/contacts';
   const isWinningJobPage = router.pathname === '/winningjobs';
 
-
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Stato per il menu mobile
 
   return (
     <aside style={styles.sidebar}>
-      <ul className='headerDesktop' style={styles.ul}>
+      {/* Menu Desktop */}
+      <ul className="headerDesktop" style={styles.ul}>
         <li style={styles.left}>
-         <Link href="/" style={styles.linkHome}>AJ COLLECTIVE</Link>
- 
+          <Link href="/" style={styles.linkHome}>AJ COLLECTIVE</Link>
+
           {/* Visualizza questo testo solo se siamo nella home */}
           {isHome && (
             <Link href="/" style={styles.link2}>
@@ -36,7 +36,7 @@ const Sidebar = () => {
           <Link href="/moodfilms" style={styles.link}>P02</Link>
           <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
         </li>
-        <li style={isWinningJobPage ? styles.otherPage : styles.other}>        
+        <li style={isWinningJobPage ? styles.otherPage : styles.other}>
           <Link href="/winningjobs" style={styles.linkAbout}>P03</Link>
           <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
         </li>
@@ -45,28 +45,41 @@ const Sidebar = () => {
           <Link href="/contacts" style={styles.link}>Contacts</Link>
         </li>
       </ul>
-     
-     <div className='headerMobile'>
-     <Link href="/" style={styles.linkHome}>AJ COLLECTIVE</Link>
-     <ul>
-     <li style={isCreativesPage ? styles.otherPage : styles.other}>
-          <Link href="/creatives" style={styles.link}>P01</Link>
-          <Link href="/creatives" style={styles.link}>Creatives</Link>
-        </li>
-        <li style={isMoodFilmsPage ? styles.otherPage : styles.other}>
-          <Link href="/moodfilms" style={styles.link}>P02</Link>
-          <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
-        </li>
-        <li style={isWinningJobPage ? styles.otherPage : styles.other}>        
-          <Link href="/winningjobs" style={styles.linkAbout}>P03</Link>
-          <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
-        </li>
-        <li style={isContactsPage ? styles.otherPage : styles.other}>
-          <Link href="/contacts" style={styles.linkAbout}>P04</Link>
-          <Link href="/contacts" style={styles.link}>Contacts</Link>
-        </li>
-      </ul>
-     </div>
+
+      {/* Menu Mobile */}
+      <div className="headerMobile">
+        <Link href="/" style={styles.linkHome}>AJ COLLECTIVE</Link>
+
+        {/* Bottone per aprire/chiudere il menu */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          style={styles.mobileButton}
+        >
+          {isMobileMenuOpen ? '-' : '+'}
+        </button>
+
+        {/* Mostra/Nasconde il menu mobile */}
+        {isMobileMenuOpen && (
+          <ul className="menuOpenMobile" style={styles.mobileMenu}>
+            <li style={isCreativesPage ? styles.otherPage : styles.other}>
+              <Link href="/creatives" style={styles.link}>P01</Link>
+              <Link href="/creatives" style={styles.link}>Creatives</Link>
+            </li>
+            <li style={isMoodFilmsPage ? styles.otherPage : styles.other}>
+              <Link href="/moodfilms" style={styles.link}>P02</Link>
+              <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
+            </li>
+            <li style={isWinningJobPage ? styles.otherPage : styles.other}>
+              <Link href="/winningjobs" style={styles.linkAbout}>P03</Link>
+              <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
+            </li>
+            <li style={isContactsPage ? styles.otherPage : styles.other}>
+              <Link href="/contacts" style={styles.linkAbout}>P04</Link>
+              <Link href="/contacts" style={styles.link}>Contacts</Link>
+            </li>
+          </ul>
+        )}
+      </div>
     </aside>
   );
 };
@@ -93,13 +106,10 @@ const styles = {
   other: {
     width: '16.66%',
   },
-  otherPage:{
+  otherPage: {
     width: '16.66%',
     paddingBottom: '15px',
     borderBottom: '1px solid black',
-  },
-  otherAbout: {
-    width: '25%',
   },
   linkHome: {
     display: 'block',
@@ -115,22 +125,18 @@ const styles = {
     color: 'black',
     fontSize: '15px',
   },
-  link2: {
-    display: 'block',
-    width: '88%',
-    lineHeight: '1',
-    padding: '0',
-    textDecoration: 'none',
-    color: 'black',
-    fontSize: '15px',
+  mobileButton: {
+    background: 'none',
+    border: 'none',
+    fontSize: '20px',
+    cursor: 'pointer',
+    marginTop: '10px',
   },
-  linkAbout: {
-    display: 'block',
-    padding: '0',
-    textDecoration: 'none',
-    color: 'black',
-    fontSize: '15px',
-    width: '25%',
+  mobileMenu: {
+    listStyleType: 'none',
+    padding: 0,
+    margin: 0,
+    marginTop: '10px',
   },
 };
 

@@ -43,12 +43,21 @@ export const GET_POSTScontacts = gql`
 {
   contacts {
       id
-    info
-    firstRate
-    secondRate
-    thirdRate
-    fourthRate
-    yoyo{html}
+    info{
+    html 
+    raw}
+    firstRate{
+    html 
+    raw}
+    secondRate{
+    html 
+    raw}
+    thirdRate{
+    html 
+    raw}
+    fourthRate{
+    html 
+    raw}
     cancellationFees
     hours
     payment
