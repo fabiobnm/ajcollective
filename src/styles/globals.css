@@ -67,7 +67,7 @@ height: 45vh;
 }
 ::selection {
   color: white; /* Colore del testo selezionato */
-  background: rgb(228, 106, 212); /* Colore di sfondo della selezione */
+  background:#ffa3d7; /* Colore di sfondo della selezione */
 }
 
 
@@ -164,6 +164,7 @@ height: 45vh;
 
 .nameCreative{
   margin-left: 45px;
+  width: 25%;
   cursor: pointer;
 }
 /* Media Query per smartphone (max-width 767px) 7//////////(/&%$&/)(/&%$£$%&/()(/&%$£"7*/

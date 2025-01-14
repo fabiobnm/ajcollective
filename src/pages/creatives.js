@@ -125,15 +125,15 @@ export default function Home() {
 
       <div style={{ display: 'block', color: 'black', width: 'max-content', paddingLeft: '0px',paddingBottom:'140px' }}>
         {data.creativesOrders[0].creative.map((creative, creativeIndex) => (
-          <div  onMouseEnter={() => setHoveredCreativeId(creative.id)}
-          onMouseLeave={() => setHoveredCreativeId(null)}
-          onMouseMove={handleMouseMove}
+          <div  
           style={{
             paddingBottom: selectedCreative === creativeIndex ? '30px' : '0',
             height: 'auto', width: '100vw' ,transition:'padding-bottom 0.4s'
           }}
           key={creative.id}>
-            <h1
+            <h1 onMouseEnter={() => setHoveredCreativeId(creative.id)}
+          onMouseLeave={() => setHoveredCreativeId(null)}
+          onMouseMove={handleMouseMove}
               className='nameCreative'
               onClick={() => handleClick(creativeIndex)}>
               {creative.name}
