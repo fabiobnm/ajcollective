@@ -15,9 +15,12 @@ export default function Home() {
     return <p>Error: {error.message}</p>;
   }
 
+  console.log('DATI:' + data.moodFilms[0].vimeoUrl);
+  
   // Funzione per gestire il clic sulle immagini
   const handleImageClick = (videoUrl) => {
     setSelectedVideo(videoUrl); // Imposta l'URL del video selezionato
+    console.log('video url:'+videoUrl)
   };
 
   // Funzione per chiudere il player
@@ -50,7 +53,7 @@ export default function Home() {
           <div style={iframeContainerStyles} onClick={(e) => e.stopPropagation()}>
             <button style={closeButtonStyles} onClick={closePlayer}>✕</button>
             <iframe
-              src={`https://player.vimeo.com/video/338065642?h=10a4c2597c?autoplay=1`}
+              src={selectedVideo}
               width="100%"
               height="100%"
               frameBorder="0"

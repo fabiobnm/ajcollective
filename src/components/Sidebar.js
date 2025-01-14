@@ -141,6 +141,7 @@ const styles = {
     padding: 0,
     margin: 0,
     marginTop: '10px',
+    marginBottom: '10px'
   },
 };
 

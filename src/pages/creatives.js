@@ -87,7 +87,7 @@ export default function Home() {
               zIndex: 1002,
             }}
           >
-            ⬅️
+            prev
           </button>
 
           <img
@@ -115,14 +115,16 @@ export default function Home() {
               zIndex: 1002,
             }}
           >
-            ➡️
+            next
           </button>
         </div>
       )}
 
       <div style={{ display: 'block', color: 'black', width: 'max-content', paddingLeft: '0px',paddingBottom:'140px' }}>
         {data.creativesOrders[0].creative.map((creative, creativeIndex) => (
-          <div 
+          <div  onMouseEnter={() => setHoveredCreativeId(creative.id)}
+          onMouseLeave={() => setHoveredCreativeId(null)}
+          onMouseMove={handleMouseMove}
           style={{
             paddingBottom: selectedCreative === creativeIndex ? '30px' : '0',
             height: 'auto', width: '100vw' ,transition:'padding-bottom 0.4s'
@@ -131,9 +133,7 @@ export default function Home() {
             <h1
               className='nameCreative'
               onClick={() => handleClick(creativeIndex)}
-              onMouseEnter={() => setHoveredCreativeId(creative.id)}
-              onMouseLeave={() => setHoveredCreativeId(null)}
-              onMouseMove={handleMouseMove}
+             
               style={{ cursor: 'pointer', marginLeft: '45px' }}
             >
               {creative.name}
