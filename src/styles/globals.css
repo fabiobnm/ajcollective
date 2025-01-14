@@ -161,7 +161,12 @@ height: 45vh;
   border-radius: 0px!important;
   background: black!important;
 }
-/* Media Query per smartphone (max-width 767px) */
+
+.nameCreative{
+  margin-left: 45px;
+  cursor: pointer;
+}
+/* Media Query per smartphone (max-width 767px) 7//////////(/&%$&/)(/&%$£$%&/()(/&%$£"7*/
 @media screen and (max-width: 767px) {
   .headerMobile{
     display: block;
@@ -224,6 +229,9 @@ height: 45vh;
   .menuOpenMobile li{
     margin-bottom: 15px;
     width: 100%;
+  }
+  .nameCreative{
+    margin-left: 1rem;
   }
   
 

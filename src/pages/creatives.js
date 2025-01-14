@@ -135,10 +135,7 @@ export default function Home() {
           key={creative.id}>
             <h1
               className='nameCreative'
-              onClick={() => handleClick(creativeIndex)}
-             
-              style={{ cursor: 'pointer', marginLeft: '45px' }}
-            >
+              onClick={() => handleClick(creativeIndex)}>
               {creative.name}
             </h1>
 
