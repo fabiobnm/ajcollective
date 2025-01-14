@@ -206,13 +206,7 @@ export default function Home() {
         handleImageClick(index); // Esegui l'azione esistente
       }
     }}
-    style={{
-      height: '300px',
-      width: 'auto',
-      marginBottom: '0px',
-      paddingBottom: '15px',
-      cursor: 'pointer', // Mostra che l'immagine è cliccabile
-    }}
+   
   />
 ))}
 

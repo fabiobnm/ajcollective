@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main style={{ marginTop: '0', background: '', overflow:'hidden' }}>
-      <div className="divHome" style={{ display: 'flex', gap: '10px' , marginTop:'50vH', transform:'translate(-25vW,-50%)',overflow:'hidden',width:'max-content'}}>
+      <div className="divHome" style={{}}>
         {data.homePages[0].gallery.map((image, index) => (
           <img
             key={index}
