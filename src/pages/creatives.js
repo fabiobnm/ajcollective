@@ -83,7 +83,8 @@ export default function Home() {
               left: '10px',
               top: '50%',
               transform: 'translateY(-50%)',
-              background: 'rgba(255, 255, 255, 0.5)',
+              background: 'none',
+              color:'white',              
               border: 'none',
               cursor: 'pointer',
               padding: '10px',
@@ -111,7 +112,8 @@ export default function Home() {
               right: '10px',
               top: '50%',
               transform: 'translateY(-50%)',
-              background: 'rgba(255, 255, 255, 0.5)',
+              background: 'none',
+              color:'white',
               border: 'none',
               cursor: 'pointer',
               padding: '10px',
@@ -120,6 +122,26 @@ export default function Home() {
           >
             next
           </button>
+         
+          {data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].title && (
+  <button 
+    onClick={() => {
+      window.open(
+        data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].title,
+        '_blank'
+      ); // Reindirizza al link
+    }}
+    style={{
+      background: 'white',
+      position: 'fixed',
+      bottom: '20px',
+      right: '20px'
+    }}
+  >
+    VIEW INTERACTIVE TREATMENT
+  </button>
+)}
+
         </div>
       )}
 
