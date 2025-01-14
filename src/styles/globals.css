@@ -146,7 +146,7 @@ height: 45vh;
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 0px;
   height: 1px;
 }
 
