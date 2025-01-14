@@ -68,16 +68,16 @@ const Sidebar = () => {
         {/* Mostra/Nasconde il menu mobile */}
         {isMobileMenuOpen && (
           <ul className="menuOpenMobile" style={styles.mobileMenu}>
-            <li style={isCreativesPage ? styles.otherPage : styles.other}>
+            <li style={isCreativesPage ? styles.otherPageMobile : styles.otherMobile}>
               <Link href="/creatives" style={styles.link}>P01</Link>
               <Link href="/creatives" style={styles.link}>Creatives</Link>
             </li>
-            <li style={isMoodFilmsPage ? styles.otherPage : styles.other}>
+            <li style={isMoodFilmsPage ? styles.otherPageMobile : styles.otherMobile}>
               <Link href="/moodfilms" style={styles.link}>P02</Link>
               <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
             </li>
            
-            <li style={isContactsPage ? styles.otherPage : styles.other}>
+            <li style={isContactsPage ? styles.otherPageMobile : styles.otherMobile}>
               <Link href="/contacts" style={styles.link}>P03</Link>
               <Link href="/contacts" style={styles.link}>Contacts</Link>
             </li>
@@ -109,6 +109,14 @@ const styles = {
   },
   otherPage: {
     width: '16.66%',
+    paddingBottom: '15px',
+    borderBottom: '1px solid black',
+  },
+  otherMobile: {
+    width: '100%',
+  },
+  otherPageMobile: {
+    width: '100%',
     paddingBottom: '15px',
     borderBottom: '1px solid black',
   },

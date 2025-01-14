@@ -18,6 +18,9 @@ export default function Home() {
     return <p>Error: {error.message}</p>;
   }
 
+  console.log('datini:'+data.creativesOrders[0].creative[9].projects[1].title);
+  
+
   const handleClick = (creativeId) => {
     if (selectedCreative === creativeId) {
       setSelectedCreative(null);
@@ -172,21 +175,28 @@ export default function Home() {
               className="custom-scroll"
             >
               {creative.projects.map((project, index) => (
-                <img
-                  className="projectsImage"
-                  key={index}
-                  src={project.cover.url}
-                  alt={`Image ${index + 1}`}
-                  onClick={() => handleImageClick(index)} // Imposta l'indice per il fullscreen
-                  style={{
-                    height: '300px',
-                    width: 'auto',
-                    marginBottom: '0px',
-                    paddingBottom:'15px',
-                    cursor: 'pointer', // Mostra che l'immagine è cliccabile
-                  }}
-                />
-              ))}
+  <img
+    className="projectsImage"
+    key={index}
+    src={project.cover.url}
+    alt={`Image ${index + 1}`}
+    onClick={() => {
+      if (project.title) {
+        window.open(project.title, '_blank');// Reindirizza al link
+      } else {
+        handleImageClick(index); // Esegui l'azione esistente
+      }
+    }}
+    style={{
+      height: '300px',
+      width: 'auto',
+      marginBottom: '0px',
+      paddingBottom: '15px',
+      cursor: 'pointer', // Mostra che l'immagine è cliccabile
+    }}
+  />
+))}
+
             </div>
           </div>
         ))}
