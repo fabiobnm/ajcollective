@@ -25,7 +25,7 @@ export const GET_POSTSHomePage = gql`
 
 export const GET_POSTSOrderCreatives = gql`
 query{
- creativesOrders{
+ creativesOrders(first:100){
   creative{
     name
       id
@@ -76,7 +76,7 @@ export const GET_POSTScontacts = gql`
 
 export const GET_GIGI = gql`
  {
-  moodFilms {
+  moodFilms (first:100) {
     id
     title
     editor

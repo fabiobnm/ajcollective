@@ -183,6 +183,26 @@ height: 45vh;
   width: 25%;
   cursor: pointer;
 }
+
+.coverMoodFilm{
+  object-fit: cover;
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 10px;
+  cursor: pointer;
+  min-height: 20vh;
+  max-height: 20vH;
+}
+
+.rigaRate{
+  border-top: 1px solid black;
+  margin-top: 50px;
+  display: none;
+}
+.enquire:hover{
+  text-decoration: underline;
+}
+
 /* Media Query per smartphone (max-width 767px) 7//////////(/&%$&/)(/&%$£$%&/()(/&%$£"7*/
 @media screen and (max-width: 767px) {
   .headerMobile{
@@ -262,6 +282,10 @@ height: 45vh;
     max-height: 210px;
     padding-bottom: 15px;
     cursor: pointer;
+}
+.rigaRate{
+
+  display: block;
 }
 
 }
