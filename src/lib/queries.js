@@ -25,8 +25,8 @@ export const GET_POSTSHomePage = gql`
 
 export const GET_POSTSOrderCreatives = gql`
 query{
- creativesOrders(first:100){
-  creative{
+ creativesOrders{
+  creative(first:100){
     name
       id
       gif{
