@@ -36,8 +36,12 @@ query{
       ... on Project{
         cover{url}
         title
+        isItAMoodFilm
+        fileVideo{
+        url}
       }
     } 
+    
     }
   }
 }

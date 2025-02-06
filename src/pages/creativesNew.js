@@ -9,7 +9,8 @@ export default function Home() {
   const [selectedCreative, setSelectedCreative] = useState(null);
   const [hoveredCreativeId, setHoveredCreativeId] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null); // Stato per l'indice dell'immagine fullscreen
+  const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null);
+  const [sortedProjectsForFullscreen, setSortedProjectsForFullscreen] = useState([]);
 
   if (loading) return <p>Loading...</p>;
   if (error) {
@@ -17,9 +18,6 @@ export default function Home() {
     console.error('Errore nella query:', error.message);
     return <p>Error: {error.message}</p>;
   }
-
-  console.log('datini:'+data.creativesOrders[0].creative[9].projects[1].title);
-  
 
   const handleClick = (creativeId) => {
     if (selectedCreative === creativeId) {
@@ -39,25 +37,26 @@ export default function Home() {
     });
   };
 
-  const handleImageClick = (index) => {
-    setFullscreenImageIndex(index); // Imposta l'indice dell'immagine cliccata
+  const handleImageClick = (index, sortedProjects) => {
+    setSortedProjectsForFullscreen(sortedProjects); // Salva l'array ordinato
+    setFullscreenImageIndex(index); // Salva l'indice corretto
   };
 
   const closeFullscreen = () => {
-    setFullscreenImageIndex(null); // Chiudi l'immagine a schermo intero
+    setFullscreenImageIndex(null);
   };
 
-  const handleNextImage = (images) => {
-    setFullscreenImageIndex((prevIndex) => (prevIndex + 1) % images.length); // Passa all'immagine successiva
+  const handleNextImage = () => {
+    setFullscreenImageIndex((prevIndex) => (prevIndex + 1) % sortedProjectsForFullscreen.length);
   };
 
-  const handlePrevImage = (images) => {
-    setFullscreenImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length); // Torna all'immagine precedente
+  const handlePrevImage = () => {
+    setFullscreenImageIndex((prevIndex) => (prevIndex - 1 + sortedProjectsForFullscreen.length) % sortedProjectsForFullscreen.length);
   };
 
   return (
-    <main style={{ marginTop: '180px', background: '' }}>
-      {fullscreenImageIndex !== null && ( // Mostra l'overlay solo se fullscreenImageIndex è impostato
+    <main style={{ marginTop: '180px' }}>
+      {fullscreenImageIndex !== null && (
         <div
           style={{
             position: 'fixed',
@@ -71,12 +70,12 @@ export default function Home() {
             alignItems: 'center',
             zIndex: 1001,
           }}
-          onClick={closeFullscreen} // Chiudi l'overlay al clic
+          onClick={closeFullscreen}
         >
           <button
             onClick={(e) => {
               e.stopPropagation();
-              handlePrevImage(data.creativesOrders[0].creative[selectedCreative].projects);
+              handlePrevImage();
             }}
             style={{
               position: 'absolute',
@@ -84,7 +83,7 @@ export default function Home() {
               top: '50%',
               transform: 'translateY(-50%)',
               background: 'none',
-              color:'white',              
+              color: 'white',
               border: 'none',
               cursor: 'pointer',
               padding: '10px',
@@ -95,9 +94,7 @@ export default function Home() {
           </button>
 
           <img
-            src={
-              data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].cover.url
-            }
+            src={sortedProjectsForFullscreen[fullscreenImageIndex]?.cover.url}
             alt="Fullscreen"
             style={{ maxWidth: '90%', maxHeight: '90%' }}
           />
@@ -105,7 +102,7 @@ export default function Home() {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              handleNextImage(data.creativesOrders[0].creative[selectedCreative].projects);
+              handleNextImage();
             }}
             style={{
               position: 'absolute',
@@ -113,7 +110,7 @@ export default function Home() {
               top: '50%',
               transform: 'translateY(-50%)',
               background: 'none',
-              color:'white',
+              color: 'white',
               border: 'none',
               cursor: 'pointer',
               padding: '10px',
@@ -122,42 +119,46 @@ export default function Home() {
           >
             next
           </button>
-         
-          {data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].title && (
-  <button 
-    onClick={() => {
-      window.open(
-        data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].title,
-        '_blank'
-      ); // Reindirizza al link
-    }}
-    style={{
-      background: 'white',
-      position: 'fixed',
-      bottom: '20px',
-      right: '20px'
-    }}
-  >
-    VIEW INTERACTIVE TREATMENT
-  </button>
-)}
 
+          {(sortedProjectsForFullscreen[fullscreenImageIndex]?.title || sortedProjectsForFullscreen[fullscreenImageIndex]?.fileVideo) && (
+            <button
+              onClick={() => {
+                if(sortedProjectsForFullscreen[fullscreenImageIndex].fileVideo){
+                    window.open(sortedProjectsForFullscreen[fullscreenImageIndex].fileVideo.url, '_blank');
+                }else{
+                window.open(sortedProjectsForFullscreen[fullscreenImageIndex].title, '_blank');
+              }}}
+              style={{
+                background: 'white',
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+              }}
+            >
+              VIEW INTERACTIVE TREATMENT
+            </button>
+          )}
         </div>
       )}
 
-      <div style={{ display: 'block', color: 'black', width: 'max-content', paddingLeft: '0px',paddingBottom:'140px' }}>
+      <div style={{ display: 'block', width: 'max-content', paddingLeft: '0px', paddingBottom: '140px' }}>
         {data.creativesOrders[0].creative.map((creative, creativeIndex) => (
-          <div  
-          style={{
-            paddingBottom: selectedCreative === creativeIndex ? '30px' : '0',
-            height: 'auto', width: '100vw' ,transition:'padding-bottom 0.4s'
-          }}
-          key={creative.id}>
-            <h1 onMouseEnter={() => setHoveredCreativeId(creative.id)}
-          onMouseLeave={() => setHoveredCreativeId(null)}
-          onMouseMove={handleMouseMove}
-              className='nameCreative'
-              onClick={() => handleClick(creativeIndex)}>
+          <div
+            style={{
+              paddingBottom: selectedCreative === creativeIndex ? '30px' : '0',
+              height: 'auto',
+              width: '100vw',
+              transition: 'padding-bottom 0.4s',
+            }}
+            key={creative.id}
+          >
+            <h1
+              onMouseEnter={() => setHoveredCreativeId(creative.id)}
+              onMouseLeave={() => setHoveredCreativeId(null)}
+              onMouseMove={handleMouseMove}
+              className="nameCreative"
+              onClick={() => handleClick(creativeIndex)}
+            >
               {creative.name}
             </h1>
 
@@ -193,31 +194,35 @@ export default function Home() {
               }}
               className="custom-scroll"
             >
-              {creative.projects.map((project, index) => (
-  <img
-    className="projectsImage"
-    key={index}
-    src={project.cover.url}
-    alt={`Image ${index + 1}`}
-    onClick={() => {
-      if (project.title) {
-        window.open(project.title, '_blank');// Reindirizza al link
-      } else {
-        handleImageClick(index); // Esegui l'azione esistente
-      }
-    }}
-   
-  />
-))}
+              {(() => {
+                const sortedProjects = [...creative.projects].sort((a, b) => a.isItAMoodFilm - b.isItAMoodFilm);
 
- 
+                return sortedProjects.map((project, index) => (
+                  <img
+                    className="projectsImage"
+                    key={index}
+                    src={project.cover.url}
+                    alt={`Image ${index + 1}`}
+                    onClick={() => {
+                        if(project.fileVideo){
+                            window.open(project.fileVideo.url, '_blank');// Reindirizza al link
+
+                        }
+                        else if (project.title) {
+                          window.open(project.title, '_blank');// Reindirizza al link
+                        } else {
+                            handleImageClick(index, sortedProjects); // Esegui l'azione esistente
+                        }
+                      }}
+                  />
+                ));
+              })()}
             </div>
           </div>
         ))}
       </div>
       <Sidebar />
       <img className="ajImg2" src="/AJCOLLECTIVE_LOGO.png" />
-
     </main>
   );
 }

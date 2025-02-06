@@ -45,24 +45,24 @@ export default function Home() {
                 </div>
 
                 <div className="rateColonne">
-                   <div style={{width:'90%'}} dangerouslySetInnerHTML={{ __html: data.contacts[0].firstRate.html }}></div>
-                <div>
-                <a className='enquire' href="mailto:example@example.com">Enquire</a>
-
-                <div className='rigaRate'></div>
-                </div>
-                </div>
-
-                <div className="rateColonne">
                    <div style={{width:'90%'}} dangerouslySetInnerHTML={{ __html: data.contacts[0].secondRate.html }}></div>
                 <div>
                 <a className='enquire' href="mailto:example@example.com">Enquire</a>
+
                 <div className='rigaRate'></div>
                 </div>
                 </div>
 
                 <div className="rateColonne">
                    <div style={{width:'90%'}} dangerouslySetInnerHTML={{ __html: data.contacts[0].thirdRate.html }}></div>
+                <div>
+                <a className='enquire' href="mailto:example@example.com">Enquire</a>
+                <div className='rigaRate'></div>
+                </div>
+                </div>
+
+                <div className="rateColonne">
+                   <div style={{width:'90%'}} dangerouslySetInnerHTML={{ __html: data.contacts[0].fourthRate.html }}></div>
                 <div>
                  <a className='enquire' href="mailto:example@example.com">Enquire</a>
                    </div>
