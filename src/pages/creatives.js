@@ -18,7 +18,7 @@ export default function Home() {
     return <p>Error: {error.message}</p>;
   }
 
-  console.log('datini:'+data.creativesOrders[0].creative[9].projects[1].title);
+  console.log(data);
   
 
   const handleClick = (creativeId) => {
@@ -123,11 +123,11 @@ export default function Home() {
             next
           </button>
          
-          {data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].title && (
+          {data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink && (
   <button 
     onClick={() => {
       window.open(
-        data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].title,
+        data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink,
         '_blank'
       ); // Reindirizza al link
     }}
@@ -139,6 +139,25 @@ export default function Home() {
     }}
   >
     VIEW INTERACTIVE TREATMENT
+  </button>
+)}
+
+{data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].fileVideo && (
+  <button 
+    onClick={() => {
+      window.open(
+        data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].fileVideo.url,
+        '_blank'
+      ); // Reindirizza al link
+    }}
+    style={{
+      background: 'white',
+      position: 'fixed',
+      bottom: '20px',
+      right: '20px'
+    }}
+  >
+    VIEW MOOD FILM
   </button>
 )}
 
@@ -194,20 +213,26 @@ export default function Home() {
               className="custom-scroll"
             >
               {creative.projects.map((project, index) => (
+                <div style={{position:'relative'}}>
   <img
     className="projectsImage"
     key={index}
     src={project.cover.url}
     alt={`Image ${index + 1}`}
     onClick={() => {
-      if (project.title) {
-        window.open(project.title, '_blank');// Reindirizza al link
+      if(project.fileVideo){
+        window.open(project.fileVideo.url, '_blank');// Reindirizza al link
+      }
+      else if (project.urlLink) {
+        window.open(project.urlLink, '_blank');// Reindirizza al link
       } else {
         handleImageClick(index); // Esegui l'azione esistente
       }
     }}
-   
   />
+      {project.isItAMoodFilm && <h1 style={{background:'pink', position:'absolute',top:0, right:0,fontSize:'40px'}}>mood film</h1>} {/* Mostra solo se esiste project.urlLink */}
+
+  </div>
 ))}
 
  

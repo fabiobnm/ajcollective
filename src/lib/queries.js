@@ -37,6 +37,7 @@ query{
         cover{url}
         title
         isItAMoodFilm
+        urlLink
         fileVideo{
         url}
       }

@@ -126,7 +126,7 @@ export default function Home() {
                 if(sortedProjectsForFullscreen[fullscreenImageIndex].fileVideo){
                     window.open(sortedProjectsForFullscreen[fullscreenImageIndex].fileVideo.url, '_blank');
                 }else{
-                window.open(sortedProjectsForFullscreen[fullscreenImageIndex].title, '_blank');
+                window.open(sortedProjectsForFullscreen[fullscreenImageIndex].urlLink, '_blank');
               }}}
               style={{
                 background: 'white',
@@ -209,7 +209,7 @@ export default function Home() {
 
                         }
                         else if (project.title) {
-                          window.open(project.title, '_blank');// Reindirizza al link
+                          window.open(project.urlLink, '_blank');// Reindirizza al link
                         } else {
                             handleImageClick(index, sortedProjects); // Esegui l'azione esistente
                         }
