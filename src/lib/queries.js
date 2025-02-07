@@ -32,7 +32,7 @@ query{
       gif{
       url
       }
-    projects{
+    projects(first:100){
       ... on Project{
         cover{url}
         title
@@ -42,6 +42,15 @@ query{
         url}
       }
     } 
+    moodFilms(first:100){
+      ... on MoodFilm{
+        thumbnail{url}
+        title
+        urlLink
+        fileVideo{
+        url}
+      }
+    }
     
     }
   }
@@ -81,7 +90,7 @@ export const GET_POSTScontacts = gql`
 
 export const GET_GIGI = gql`
  {
-  moodFilms (first:100) {
+  MoodFilmOlds (first:100) {
     id
     title
     editor

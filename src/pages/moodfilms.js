@@ -15,7 +15,7 @@ export default function Home() {
     return <p>Error: {error.message}</p>;
   }
 
-  console.log('DATI:' + data.moodFilms[0].vimeoUrl);
+  console.log('DATI:' + data.MoodFilmOlds[0].vimeoUrl);
   
   // Funzione per gestire il clic sulle immagini
   const handleImageClick = (videoUrl) => {
@@ -31,8 +31,8 @@ export default function Home() {
   return (
     <main style={{ marginTop: '125px' }}>
       <div className='moodFilmsList'>
-        {data.moodFilms.map((moodFilms) => (
-          <div key={moodFilms.id} style={{ marginBottom: '20px' }}>
+        {data.moodFilmOld.map((moodFilms) => (
+          <div key={moodFilmOlds.id} style={{ marginBottom: '20px' }}>
             <img
               className='coverMoodFilm'
               src={moodFilms.cover.url}

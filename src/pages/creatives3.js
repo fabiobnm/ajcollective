@@ -10,7 +10,6 @@ export default function Home() {
   const [hoveredCreativeId, setHoveredCreativeId] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null); // Stato per l'indice dell'immagine fullscreen
-  const [projectsLength, setProjectsLength] = useState(0);
 
   if (loading) return <p>Loading...</p>;
   if (error) {
@@ -40,25 +39,20 @@ export default function Home() {
     });
   };
 
-  const handleImageClick = (index, projectsLength) => {
-    setFullscreenImageIndex(index);
-    setProjectsLength(projectsLength); // Salva il valore della lunghezza
-    console.log('length'+projectsLength);
-    
+  const handleImageClick = (index) => {
+    setFullscreenImageIndex(index); // Imposta l'indice dell'immagine cliccata
   };
 
   const closeFullscreen = () => {
     setFullscreenImageIndex(null); // Chiudi l'immagine a schermo intero
   };
 
-  const handleNextImage = (images, images2) => {
-    setFullscreenImageIndex((prevIndex) => (prevIndex + 1) % (data.creativesOrders[0].creative[selectedCreative].projects.length + data.creativesOrders[0].creative[selectedCreative].moodFilms.length) ); // Passa all'immagine successiva
-  console.log('numerillo'+fullscreenImageIndex);
-  
-};
+  const handleNextImage = (images) => {
+    setFullscreenImageIndex((prevIndex) => (prevIndex + 1) % images.length); // Passa all'immagine successiva
+  };
 
   const handlePrevImage = (images) => {
-    setFullscreenImageIndex((prevIndex) => (prevIndex - 1 + (data.creativesOrders[0].creative[selectedCreative].projects.length + data.creativesOrders[0].creative[selectedCreative].moodFilms.length)) % (data.creativesOrders[0].creative[selectedCreative].projects.length + data.creativesOrders[0].creative[selectedCreative].moodFilms.length)); // Torna all'immagine precedente
+    setFullscreenImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length); // Torna all'immagine precedente
   };
 
   return (
@@ -100,22 +94,18 @@ export default function Home() {
             prev
           </button>
 
-          <img className='popUpImg'
-                src={fullscreenImageIndex < projectsLength
-                ? data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].cover.url
-                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].thumbnail.url
-                }
-               alt="Fullscreen"
-              style={{ maxWidth: '90%', maxHeight: '90%' }}
+          <img
+            src={
+              data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].cover.url
+            }
+            alt="Fullscreen"
+            style={{ maxWidth: '90%', maxHeight: '90%' }}
           />
 
           <button
             onClick={(e) => {
               e.stopPropagation();
-              handleNextImage(fullscreenImageIndex <  data.creativesOrders[0].creative[selectedCreative].projects.length
-                ?(data.creativesOrders[0].creative[selectedCreative].projects, data.creativesOrders[0].creative[selectedCreative].moodFilms )
-                :(data.creativesOrders[0].creative[selectedCreative].moodFilms, data.creativesOrders[0].creative[selectedCreative].projects)
-            );
+              handleNextImage(data.creativesOrders[0].creative[selectedCreative].projects);
             }}
             style={{
               position: 'absolute',
@@ -133,39 +123,30 @@ export default function Home() {
             next
           </button>
          
-          { (fullscreenImageIndex < projectsLength
-                ? data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink
-                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].urlLink) && (
+          {data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink && (
   <button 
     onClick={() => {
       window.open(
-        (fullscreenImageIndex < projectsLength
-            ?data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink
-            : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].urlLink
-        ),
+        data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink,
         '_blank'
       ); // Reindirizza al link
     }}
-    
     style={{
       background: 'white',
       position: 'fixed',
       bottom: '20px',
       right: '20px'
     }}
-  > {fullscreenImageIndex < projectsLength
-    ?'VIEW INTERACTIVE TREATMENT'
-    :'VIEW MOOD FILM'}
+  >
+    VIEW INTERACTIVE TREATMENT
   </button>
 )}
 
-{fullscreenImageIndex < projectsLength
-                ? data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].fileVideo
-                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].fileVideo && (
+{data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].fileVideo && (
   <button 
     onClick={() => {
       window.open(
-        data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex].urlLink,
+        data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].fileVideo.url,
         '_blank'
       ); // Reindirizza al link
     }}
@@ -222,6 +203,7 @@ export default function Home() {
                 overflow: 'hidden',
                 transition: 'max-height 0.5s',
                 marginTop: '10px',
+                background:'red',
                 display: 'flex',
                 gridTemplateRows: 'repeat(1, auto)',
                 gridAutoFlow: 'column',
@@ -245,41 +227,41 @@ export default function Home() {
       else if (project.urlLink) {
         window.open(project.urlLink, '_blank');// Reindirizza al link
       } else {
-        handleImageClick(index, creative.projects.length ); // Esegui l'azione esistente
+        handleImageClick(index); // Esegui l'azione esistente
       }
     }}
   />
 
   </div>
 ))}
-{ creative.moodFilms.length>0 
- ?<div style={{minWidth:'325px',height:'286px',position:'relative'}}>
+
+<div style={{minWidth:'500px',background:'yellow',height:'286px',marginRight:'25px',position:'relative'}}>
   <h1>TREATMENTS</h1>
   <h1 style={{position:'absolute',bottom:0,right:0}}>MOOD FILMS</h1>
   </div>
-  :''
 
-}
-
+  {/*
   {creative.moodFilms.map((project, index) => (
                 <div style={{position:'relative'}}>
   <img
     className="projectsImage"
-    key={index+creative.projects.length}
+    key={index}
     src={project.thumbnail.url}
-    alt={`Image ${index + creative.projects.length + 1}`}
+    alt={`Image ${index + 1}`}
     onClick={() => {
       if(project.fileVideo){
         window.open(project.fileVideo.url, '_blank');// Reindirizza al link
       }
-       else {
-        handleImageClick(index + creative.projects.length, creative.projects.length  ); // Esegui l'azione esistente
+      else if (project.urlLink) {
+        window.open(project.urlLink, '_blank');// Reindirizza al link
+      } else {
+        handleImageClick(index); // Esegui l'azione esistente
       }
     }}
   />
 
   </div>
-))}
+))}  */}
 
             </div>
           </div>
