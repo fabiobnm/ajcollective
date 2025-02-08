@@ -148,7 +148,9 @@ export default function Home() {
     }}
     
     style={{
-      background: 'white',
+      background: fullscreenImageIndex < projectsLength
+        ?'white'
+        :'#ffa3d7',
       position: 'fixed',
       bottom: '20px',
       right: '20px'
