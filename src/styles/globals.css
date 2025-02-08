@@ -55,6 +55,28 @@ h1, p{
   margin-bottom: 70px;
   color:black;
 }
+.treatmentSeparator{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.moodFilmSeparator{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.treatmentVertical{
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: rotate(90deg)
+}
+.moodFilmVertical{
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: rotate(-90deg)
+}
 .contactSecondBlock{
 height: 45vh;
 }

@@ -36,10 +36,7 @@ query{
       ... on Project{
         cover{url}
         title
-        isItAMoodFilm
         urlLink
-        fileVideo{
-        url}
       }
     } 
     moodFilms(first:100){

@@ -161,26 +161,7 @@ export default function Home() {
   </button>
 )}
 
-{fullscreenImageIndex < projectsLength
-                ? data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].fileVideo
-                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].fileVideo && (
-  <button 
-    onClick={() => {
-      window.open(
-        data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex].urlLink,
-        '_blank'
-      ); // Reindirizza al link
-    }}
-    style={{
-      background: '#ffa3d7',
-      position: 'fixed',
-      bottom: '20px',
-      right: '20px'
-    }}
-  >
-    VIEW MOOD FILM
-  </button>
-)}
+
 
         </div>
       )}
@@ -256,8 +237,8 @@ export default function Home() {
 ))}
 { creative.moodFilms.length>0 
  ?<div style={{minWidth:'325px',height:'286px',position:'relative'}}>
-  <h1>TREATMENTS</h1>
-  <h1 style={{position:'absolute',bottom:0,right:0}}>MOOD FILMS</h1>
+  <h1 className='treatmentVertical'>TREATMENTS</h1>
+  <h1 className='moodFilmVertical'>MOOD FILMS</h1>
   </div>
   :''
 
