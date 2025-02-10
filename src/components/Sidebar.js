@@ -6,9 +6,8 @@ const Sidebar = () => {
   const router = useRouter();
   const isHome = router.pathname === '/';
   const isCreativesPage = router.pathname === '/creatives';
-  const isMoodFilmsPage = router.pathname === '/moodfilms';
   const isContactsPage = router.pathname === '/contacts';
-  const isWinningJobPage = router.pathname === '/winningjobs';
+  const isWinningJobsPage = router.pathname === '/winningjobs';
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Stato per il menu mobile
 
@@ -34,9 +33,9 @@ const Sidebar = () => {
           <Link href="/creatives" style={styles.link}>P01</Link>
           <Link href="/creatives" style={styles.link}>Creatives</Link>
         </li>
-        <li style={isMoodFilmsPage ? styles.otherPage : styles.other}>
-          <Link href="/moodfilms" style={styles.link}>P02</Link>
-          <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
+        <li style={isWinningJobsPage ? styles.otherPage : styles.other}>
+          <Link href="/winningjobs" style={styles.link}>P02</Link>
+          <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
         </li>
        
         <li style={isContactsPage ? styles.otherPage : styles.other}>
