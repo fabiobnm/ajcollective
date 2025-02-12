@@ -168,9 +168,12 @@ height: 45vh;
    display: flex;
     gap: 10px ; 
     margin-top:50vH;
-    transform:translate(-25vW,-50%);
+   /* transform:translate(-25vW,-50%);
    overflow:hidden;
-   width:max-content
+   width:max-content*/
+   transform:translate(0,-50%);
+   overflow:scroll;
+   
 }
 .moodFilmsList{
   display: grid;

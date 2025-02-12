@@ -2,11 +2,20 @@ import { useQuery } from '@apollo/client';
 import client from '../lib/apolloClient';
 import { GET_POSTSWinningJob } from '../lib/queries';
 import Sidebar from '../components/Sidebar';
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 
 export default function Home() {
   const { loading, error, data } = useQuery(GET_POSTSWinningJob, { client });
   const [selectedVideo, setSelectedVideo] = useState(null); // Stato per il video selezionato
+
+     // ✅ Usa useEffect per cambiare il background
+      useEffect(() => {
+        document.documentElement.style.background = "white"; // Cambia background di <html>
+    
+        return () => {
+          document.documentElement.style.background = ""; // Resetta quando il componente si smonta
+        };
+      }, []);
 
   if (loading) return <p>Loading...</p>;
   if (error) {

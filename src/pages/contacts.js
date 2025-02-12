@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import client from '../lib/apolloClient';
 import { GET_POSTScontacts } from '../lib/queries';
@@ -8,6 +8,16 @@ import Link from 'next/link';
 export default function Home() {
   const { loading, error, data } = useQuery(GET_POSTScontacts, { client });
   const [selectedCreative, setSelectedCreative] = useState(null); // Stato per tracciare il creative cliccato
+
+  // ✅ Usa useEffect per cambiare il background
+      useEffect(() => {
+        document.documentElement.style.background = "#ffa3d7"; // Cambia background di <html>
+    
+        return () => {
+          document.documentElement.style.background = ""; // Resetta quando il componente si smonta
+        };
+      }, []);
+
 
   if (loading) return <p>Loading...</p>;
   if (error) {

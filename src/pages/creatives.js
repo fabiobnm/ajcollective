@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import client from '../lib/apolloClient';
 import { GET_POSTSOrderCreatives } from '../lib/queries';
@@ -12,6 +12,15 @@ export default function Home() {
   const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null); // Stato per l'indice dell'immagine fullscreen
   const [projectsLength, setProjectsLength] = useState(0);
 
+    // ✅ Usa useEffect per cambiare il background
+    useEffect(() => {
+      document.documentElement.style.background = "white"; // Cambia background di <html>
+  
+      return () => {
+        document.documentElement.style.background = ""; // Resetta quando il componente si smonta
+      };
+    }, []);
+    
   if (loading) return <p>Loading...</p>;
   if (error) {
     alert('err');
@@ -161,6 +170,24 @@ export default function Home() {
   </button>
 )}
 
+{ ((fullscreenImageIndex >= projectsLength &&  data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.fileVideo?.url)) ? (
+    <button 
+    onClick={() => {
+      window.open(
+        data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].fileVideo.url,
+        '_blank'
+      ); // Reindirizza al link
+    }}
+    style={{
+      background: '#ffa3d7',
+      position: 'fixed',
+      bottom: '20px',
+      left: '20px'
+    }}
+  >
+    VIEW MOOD FILMPIOUFIKJFH
+  </button>
+): ''}
 
 
         </div>
