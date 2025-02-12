@@ -71,9 +71,9 @@ const Sidebar = () => {
               <Link href="/creatives" style={styles.link}>P01</Link>
               <Link href="/creatives" style={styles.link}>Creatives</Link>
             </li>
-            <li style={isMoodFilmsPage ? styles.otherPageMobile : styles.otherMobile}>
-              <Link href="/moodfilms" style={styles.link}>P02</Link>
-              <Link href="/moodfilms" style={styles.link}>Mood Films</Link>
+            <li style={isWinningJobsPage ? styles.otherPageMobile : styles.otherMobile}>
+              <Link href="/winningjobs" style={styles.link}>P02</Link>
+              <Link href="/winningjobs" style={styles.link}>Winning Jobs</Link>
             </li>
            
             <li style={isContactsPage ? styles.otherPageMobile : styles.otherMobile}>
