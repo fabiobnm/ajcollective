@@ -299,7 +299,7 @@ height: 45vh;
     margin-left: 1rem;
     width: auto;
   }
-  
+  /*
   .projectsImage {
     height: fit-content;
     width: 90vW;
@@ -308,6 +308,7 @@ height: 45vh;
     padding-bottom: 15px;
     cursor: pointer;
 }
+    */
 .rigaRate{
 
   display: block;
