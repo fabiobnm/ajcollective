@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
-
 import client from '../lib/apolloClient';
 import { GET_POSTSHomePage } from '../lib/queries';
 
@@ -69,8 +68,7 @@ const Sidebar = () => {
         {isHome && (
             <div style={{width:'85%'}}>
             <p style={styles.link2}>
-              Creative Research. Directors Interpretation. Commercial -
-              Film - Music Video Treatments. Creative Writing. Mood Films.
+            <div style={{width:'100%'}} dangerouslySetInnerHTML={{ __html: data.homePages[0].headerText.html }}></div>
             </p>
             </div>
           )}
