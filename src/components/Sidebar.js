@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useQuery } from '@apollo/client';
+
+import client from '../lib/apolloClient';
+import { GET_POSTSHomePage } from '../lib/queries';
+
 
 const Sidebar = () => {
   const router = useRouter();
@@ -10,6 +15,21 @@ const Sidebar = () => {
   const isWinningJobsPage = router.pathname === '/winningjobs';
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Stato per il menu mobile
+  const { loading, error, data } = useQuery(GET_POSTSHomePage, { client });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) {
+    alert('err');
+    console.log('ciaoooo');
+    console.log(data);
+
+    console.error('Errore nella query:', error.message);
+    console.error('Dettagli dell\'errore:', error.graphQLErrors);
+    console.error('Dettagli della risposta:', error.networkError);
+    return <p>Error: {error.message}</p>;
+  }
+
+  console.log('Dati sidebar:', data.homePages[0].headerText.html);
 
   return (
     <aside className='sideBar' style={isContactsPage ? styles.pink : styles.white}>
@@ -22,8 +42,7 @@ const Sidebar = () => {
           {isHome && (
             <div style={{width:'85%'}}>
             <p style={styles.link2}>
-              Creative Research. Directors Interpretation. Commercial -
-              Film - Music Video Treatments. Creative Writing. Mood Films.
+            <div style={{width:'100%'}} dangerouslySetInnerHTML={{ __html: data.homePages[0].headerText.html }}></div>
             </p>
             </div>
           )}
