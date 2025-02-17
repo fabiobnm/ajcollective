@@ -12,6 +12,22 @@ export default function Home() {
   const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null); // Stato per l'indice dell'immagine fullscreen
   const [projectsLength, setProjectsLength] = useState(0);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (fullscreenImageIndex !== null) {
+        if (event.key === "ArrowRight") {
+          handleNextImage();
+        } else if (event.key === "ArrowLeft") {
+          handlePrevImage();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [fullscreenImageIndex]); 
     // ✅ Usa useEffect per cambiare il background
     useEffect(() => {
       document.documentElement.style.background = "white"; // Cambia background di <html>

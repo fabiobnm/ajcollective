@@ -23,6 +23,7 @@ export const GET_POSTSHomePage = gql`
 
 `;
 
+
 export const GET_POSTSWinningJob = gql`
 query{
   winningJobs{
