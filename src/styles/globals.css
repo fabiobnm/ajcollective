@@ -29,6 +29,9 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+ p .textMenu{
+  font-size: 12px;
+} 
 
 h1, p{ 
   color: black;
@@ -40,6 +43,7 @@ h1, p{
   bottom: 10px;
   width: 100%;
 }
+
 .ajImg2{
   position: fixed;
   bottom: 10px;
@@ -228,6 +232,12 @@ height: 45vh;
   text-decoration: underline;
 }
 
+.separatorDiv{
+  min-width: 325px;
+    height: 286px;
+    position: relative;
+}
+
 /* Media Query per smartphone (max-width 767px) 7//////////(/&%$&/)(/&%$£$%&/()(/&%$£"7*/
 @media screen and (max-width: 767px) {
   .headerMobile{
@@ -299,16 +309,14 @@ height: 45vh;
     margin-left: 1rem;
     width: auto;
   }
-  /*
+  
   .projectsImage {
-    height: fit-content;
-    width: 90vW;
-    min-height: 210px;
-    max-height: 210px;
-    padding-bottom: 15px;
-    cursor: pointer;
+    max-height: 230px;
 }
-    */
+.separatorDiv{
+    height: 230px;
+}
+    
 .rigaRate{
 
   display: block;
@@ -316,7 +324,7 @@ height: 45vh;
 
 }
 
-@media (orientation: landscape) {
+@media screen and (max-width: 950px) and (orientation: landscape) {
   .headerMobile{
     display: none;
   }
@@ -332,6 +340,9 @@ height: 45vh;
 }
 .rateColonne{
   height: 105vH;
+}
+.textMenu p{
+  font-size: 7px;
 }
 
 }

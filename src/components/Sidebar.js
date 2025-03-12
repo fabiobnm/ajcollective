@@ -41,7 +41,7 @@ const Sidebar = () => {
           {isHome && (
             <div style={{width:'85%'}}>
             <p style={styles.link2}>
-            <div style={{width:'100%'}} dangerouslySetInnerHTML={{ __html: data.homePages[0].headerText.html }}></div>
+            <div className='textMenu' style={{width:'100%'}} dangerouslySetInnerHTML={{ __html: data.homePages[0].headerText.html }}></div>
             </p>
             </div>
           )}

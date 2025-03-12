@@ -279,7 +279,7 @@ export default function Home() {
   </div>
 ))}
 { creative.moodFilms.length>0 
- ?<div style={{minWidth:'325px',height:'286px',position:'relative'}}>
+ ?<div className='separatorDiv'>
   <h1 className='treatmentVertical'>TREATMENTS</h1>
   <h1 className='moodFilmVertical'>MOOD FILMS</h1>
   </div>
