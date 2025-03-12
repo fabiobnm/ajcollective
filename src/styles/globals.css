@@ -315,3 +315,23 @@ height: 45vh;
 }
 
 }
+
+@media (orientation: landscape) {
+  .headerMobile{
+    display: none;
+  }
+  .headerDesktop{
+    display: block;
+  }
+  .contactFirstBlock{
+    margin-top: 30vH;
+  }
+  
+  .contactSecondBlock {
+    height: 100vh;
+}
+.rateColonne{
+  height: 92vH;
+}
+
+}
