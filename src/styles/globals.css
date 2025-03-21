@@ -91,6 +91,13 @@ height: 45vh;
 .enquire{
   font-size: 12px;
 }
+
+.infoCreative{
+  width: 100%;
+  color: black;
+  padding-inline: 45px;
+}
+
 ::selection {
   color: white; /* Colore del testo selezionato */
   background:#ffa3d7; /* Colore di sfondo della selezione */
@@ -266,7 +273,12 @@ height: 45vh;
   }
 
   .divHome{
-    gap:5px}
+    gap:5px
+  }
+  .infoCreative{
+  
+    padding-inline: 1rem;
+  }
 
   .normeFooter{
     padding-left: 1rem;

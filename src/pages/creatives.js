@@ -259,7 +259,7 @@ export default function Home() {
             >
 
               {(creative.info?.html)?<div className='separatorDiv'>
-<div style={{width:'100%', color:'black',paddingInline:'45px'}} dangerouslySetInnerHTML={{ __html: creative.info?.html }}></div>
+<div className='infoCreative' dangerouslySetInnerHTML={{ __html: creative.info?.html }}></div>
   </div>:''
 
               }
