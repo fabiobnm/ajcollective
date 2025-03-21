@@ -96,6 +96,7 @@ height: 45vh;
   width: 100%;
   color: black;
   padding-inline: 45px;
+  padding-right: 23px;
 }
 
 ::selection {
@@ -244,6 +245,11 @@ height: 45vh;
     height: 286px;
     position: relative;
 }
+.separatorInfo{
+  min-width: 625px;
+    height: 286px;
+    position: relative;
+}
 
 /* Media Query per smartphone (max-width 767px) 7//////////(/&%$&/)(/&%$£$%&/()(/&%$£"7*/
 @media screen and (max-width: 767px) {
@@ -280,6 +286,13 @@ height: 45vh;
     padding-inline: 1rem;
   }
 
+
+  .separatorInfo{
+    min-width: 325px;
+      height: 286px;
+      position: relative;
+  }
+  
   .normeFooter{
     padding-left: 1rem;
     padding-right: 1rem;

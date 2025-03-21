@@ -258,7 +258,7 @@ export default function Home() {
               className="custom-scroll"
             >
 
-              {(creative.info?.html)?<div className='separatorDiv'>
+              {(creative.info?.html)?<div className='separatorInfo'>
 <div className='infoCreative' dangerouslySetInnerHTML={{ __html: creative.info?.html }}></div>
   </div>:''
 
