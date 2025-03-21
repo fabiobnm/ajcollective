@@ -246,8 +246,8 @@ height: 45vh;
     position: relative;
 }
 .separatorInfo{
-  min-width: 625px;
-    height: 286px;
+  min-width: calc(25vw + 23px);
+      height: 286px;
     position: relative;
 }
 
