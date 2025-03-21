@@ -41,6 +41,7 @@ query{
   creative(first:100){
     name
       id
+      info{html}
       gif{
       url
       }

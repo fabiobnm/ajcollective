@@ -257,6 +257,11 @@ export default function Home() {
               }}
               className="custom-scroll"
             >
+
+<div className='separatorDiv'>
+<div style={{width:'100%', color:'black',paddingInline:'45px'}} dangerouslySetInnerHTML={{ __html: creative.info?.html }}></div>
+
+  </div>
               {creative.projects.map((project, index) => (
                 <div style={{position:'relative'}}>
   <img
@@ -306,6 +311,8 @@ export default function Home() {
 
   </div>
 ))}
+
+
 
             </div>
           </div>
