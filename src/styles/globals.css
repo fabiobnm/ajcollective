@@ -269,6 +269,14 @@ height: 45vh;
     width: auto;
   }
 
+  .coverMoodFilm{
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    cursor: pointer;
+  
+  }
+
   .footerVoice{
     margin-top: 40px;
   }
