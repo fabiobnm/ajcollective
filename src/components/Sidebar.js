@@ -134,7 +134,7 @@ const styles = {
   otherPageMobile: {
     width: '100%',
     paddingBottom: '15px',
-    borderBottom: '.1px solid black',
+    borderBottom: '1px solid black',
   },
   linkHome: {
     display: 'block',

@@ -222,13 +222,11 @@ height: 45vh;
 }
 
 .coverMoodFilm{
-  object-fit: cover;
   width: 100%;
   height: fit-content;
   margin-bottom: 10px;
   cursor: pointer;
-  min-height: 20vh;
-  max-height: 20vH;
+
 }
 
 .rigaRate{
