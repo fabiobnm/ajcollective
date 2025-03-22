@@ -28,7 +28,6 @@ const Sidebar = () => {
     return <p>Error: {error.message}</p>;
   }
 
-  console.log('Dati sidebar:', data.homePages[0].headerText.html);
 
   return (
     <aside className='sideBar' style={isContactsPage ? styles.pink : styles.white}>

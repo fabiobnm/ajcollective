@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useQuery } from '@apollo/client';
 import client from '../lib/apolloClient';
 import { GET_POSTSOrderCreatives } from '../lib/queries';
@@ -10,7 +10,63 @@ export default function Home() {
   const [hoveredCreativeId, setHoveredCreativeId] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null); // Stato per l'indice dell'immagine fullscreen
+  const [projectsLength, setProjectsLength] = useState(0);
 
+  // Ref per il div che vogliamo scrollare
+    const divRefs = useRef([]); // ✅ Aggiunto array di ref
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const scrollLeft = useRef(0);
+    
+    const handleMouseDown = (index, e) => {
+      if (!divRefs.current[index]) return;
+      isDragging.current = true;
+      startX.current = e.clientX - divRefs.current[index].offsetLeft;
+      scrollLeft.current = divRefs.current[index].scrollLeft;
+    };
+    
+    const handleMouseLeave = () => {
+      isDragging.current = false;
+    };
+    
+    const handleMouseUp = () => {
+      isDragging.current = false;
+    };
+    
+    const handleMouseMove = (index, e) => {
+      if (!isDragging.current || !divRefs.current[index]) return;
+      e.preventDefault();
+      const x = e.clientX - divRefs.current[index].offsetLeft;
+      const scroll = x - startX.current;
+      divRefs.current[index].scrollLeft = scrollLeft.current - scroll;
+    };
+    
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (fullscreenImageIndex !== null) {
+        if (event.key === "ArrowRight") {
+          handleNextImage();
+        } else if (event.key === "ArrowLeft") {
+          handlePrevImage();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [fullscreenImageIndex]); 
+    // ✅ Usa useEffect per cambiare il background
+    useEffect(() => {
+      document.documentElement.style.background = "white"; // Cambia background di <html>
+  
+      return () => {
+        document.documentElement.style.background = ""; // Resetta quando il componente si smonta
+      };
+    }, []);
+    
   if (loading) return <p>Loading...</p>;
   if (error) {
     alert('err');
@@ -32,27 +88,32 @@ export default function Home() {
     }
   };
 
-  const handleMouseMove = (event) => {
+  const handleMouseMove2 = (event) => {
     setMousePosition({
       x: event.clientX,
       y: event.clientY,
     });
   };
 
-  const handleImageClick = (index) => {
-    setFullscreenImageIndex(index); // Imposta l'indice dell'immagine cliccata
+  const handleImageClick = (index, projectsLength) => {
+    setFullscreenImageIndex(index);
+    setProjectsLength(projectsLength); // Salva il valore della lunghezza
+    console.log('length'+projectsLength);
+    
   };
 
   const closeFullscreen = () => {
     setFullscreenImageIndex(null); // Chiudi l'immagine a schermo intero
   };
 
-  const handleNextImage = (images) => {
-    setFullscreenImageIndex((prevIndex) => (prevIndex + 1) % images.length); // Passa all'immagine successiva
-  };
+  const handleNextImage = (images, images2) => {
+    setFullscreenImageIndex((prevIndex) => (prevIndex + 1) % (data.creativesOrders[0].creative[selectedCreative].projects.length + data.creativesOrders[0].creative[selectedCreative].moodFilms.length) ); // Passa all'immagine successiva
+  console.log('numerillo'+fullscreenImageIndex);
+  
+};
 
   const handlePrevImage = (images) => {
-    setFullscreenImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length); // Torna all'immagine precedente
+    setFullscreenImageIndex((prevIndex) => (prevIndex - 1 + (data.creativesOrders[0].creative[selectedCreative].projects.length + data.creativesOrders[0].creative[selectedCreative].moodFilms.length)) % (data.creativesOrders[0].creative[selectedCreative].projects.length + data.creativesOrders[0].creative[selectedCreative].moodFilms.length)); // Torna all'immagine precedente
   };
 
   return (
@@ -94,18 +155,22 @@ export default function Home() {
             prev
           </button>
 
-          <img
-            src={
-              data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].cover.url
-            }
-            alt="Fullscreen"
-            style={{ maxWidth: '90%', maxHeight: '90%' }}
+          <img className='popUpImg'
+                src={fullscreenImageIndex < projectsLength
+                ? data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].cover.url
+                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].thumbnail.url
+                }
+               alt="Fullscreen"
+              style={{ maxWidth: '90%', maxHeight: '90%' }}
           />
 
           <button
             onClick={(e) => {
               e.stopPropagation();
-              handleNextImage(data.creativesOrders[0].creative[selectedCreative].projects);
+              handleNextImage(fullscreenImageIndex <  data.creativesOrders[0].creative[selectedCreative].projects.length
+                ?(data.creativesOrders[0].creative[selectedCreative].projects, data.creativesOrders[0].creative[selectedCreative].moodFilms )
+                :(data.creativesOrders[0].creative[selectedCreative].moodFilms, data.creativesOrders[0].creative[selectedCreative].projects)
+            );
             }}
             style={{
               position: 'absolute',
@@ -123,30 +188,39 @@ export default function Home() {
             next
           </button>
          
-          {data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink && (
+          { (fullscreenImageIndex < projectsLength
+                ? data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink
+                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].urlLink) && (
   <button 
     onClick={() => {
       window.open(
-        data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink,
+        (fullscreenImageIndex < projectsLength
+            ?data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink
+            : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].urlLink
+        ),
         '_blank'
       ); // Reindirizza al link
     }}
+    
     style={{
-      background: 'white',
+      background: fullscreenImageIndex < projectsLength
+        ?'white'
+        :'#ffa3d7',
       position: 'fixed',
       bottom: '20px',
       right: '20px'
     }}
-  >
-    VIEW INTERACTIVE TREATMENT
+  > {fullscreenImageIndex < projectsLength
+    ?'VIEW INTERACTIVE TREATMENT'
+    :'VIEW MOOD FILM'}
   </button>
 )}
 
-{data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].fileVideo && (
-  <button 
+{ ((fullscreenImageIndex >= projectsLength &&  data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.fileVideo?.url)) ? (
+    <button 
     onClick={() => {
       window.open(
-        data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].fileVideo.url,
+        data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].fileVideo.url,
         '_blank'
       ); // Reindirizza al link
     }}
@@ -154,12 +228,13 @@ export default function Home() {
       background: '#ffa3d7',
       position: 'fixed',
       bottom: '20px',
-      right: '20px'
+      left: '20px'
     }}
   >
-    VIEW MOOD FILM
+    VIEW MOOD FILMPIOUFIKJFH
   </button>
-)}
+): ''}
+
 
         </div>
       )}
@@ -174,7 +249,7 @@ export default function Home() {
           key={creative.id}>
             <h1 onMouseEnter={() => setHoveredCreativeId(creative.id)}
           onMouseLeave={() => setHoveredCreativeId(null)}
-          onMouseMove={handleMouseMove}
+          onMouseMove={handleMouseMove2}
               className='nameCreative'
               onClick={() => handleClick(creativeIndex)}>
               {creative.name}
@@ -198,12 +273,16 @@ export default function Home() {
             )}
 
             <div
+             ref={(el) => (divRefs.current[creativeIndex] = el)} // ✅ Assegna il ref giusto
+             onMouseDown={(e) => handleMouseDown(creativeIndex, e)}
+             onMouseLeave={handleMouseLeave}
+             onMouseUp={handleMouseUp}
+             onMouseMove={(e) => handleMouseMove(creativeIndex, e)}
               style={{
                 maxHeight: selectedCreative === creativeIndex ? '400px' : '0',
                 overflow: 'hidden',
                 transition: 'max-height 0.5s',
                 marginTop: '10px',
-                background:'red',
                 display: 'flex',
                 gridTemplateRows: 'repeat(1, auto)',
                 gridAutoFlow: 'column',
@@ -213,6 +292,13 @@ export default function Home() {
               }}
               className="custom-scroll"
             >
+
+              {(creative.info?.html)?<div className='separatorInfo'>
+<div className='infoCreative' dangerouslySetInnerHTML={{ __html: creative.info?.html }}></div>
+  </div>:''
+
+              }
+
               {creative.projects.map((project, index) => (
                 <div style={{position:'relative'}}>
   <img
@@ -227,7 +313,35 @@ export default function Home() {
       else if (project.urlLink) {
         window.open(project.urlLink, '_blank');// Reindirizza al link
       } else {
-        handleImageClick(index); // Esegui l'azione esistente
+        handleImageClick(index, creative.projects.length ); // Esegui l'azione esistente
+      }
+    }}
+  />
+
+  </div>
+))}
+{ creative.moodFilms.length>0 
+ ?<div className='separatorDiv'>
+  <h1 className='treatmentVertical'>TREATMENTS</h1>
+  <h1 className='moodFilmVertical'>MOOD FILMS</h1>
+  </div>
+  :''
+
+}
+
+  {creative.moodFilms.map((project, index) => (
+                <div style={{position:'relative'}}>
+  <img
+    className="projectsImage"
+    key={index+creative.projects.length}
+    src={project.thumbnail.url}
+    alt={`Image ${index + creative.projects.length + 1}`}
+    onClick={() => {
+      if(project.fileVideo){
+        window.open(project.fileVideo.url, '_blank');// Reindirizza al link
+      }
+       else {
+        handleImageClick(index + creative.projects.length, creative.projects.length  ); // Esegui l'azione esistente
       }
     }}
   />
@@ -235,33 +349,7 @@ export default function Home() {
   </div>
 ))}
 
-<div style={{minWidth:'500px',background:'yellow',height:'286px',marginRight:'25px',position:'relative'}}>
-  <h1>TREATMENTS</h1>
-  <h1 style={{position:'absolute',bottom:0,right:0}}>MOOD FILMS</h1>
-  </div>
 
-  {/*
-  {creative.moodFilms.map((project, index) => (
-                <div style={{position:'relative'}}>
-  <img
-    className="projectsImage"
-    key={index}
-    src={project.thumbnail.url}
-    alt={`Image ${index + 1}`}
-    onClick={() => {
-      if(project.fileVideo){
-        window.open(project.fileVideo.url, '_blank');// Reindirizza al link
-      }
-      else if (project.urlLink) {
-        window.open(project.urlLink, '_blank');// Reindirizza al link
-      } else {
-        handleImageClick(index); // Esegui l'azione esistente
-      }
-    }}
-  />
-
-  </div>
-))}  */}
 
             </div>
           </div>

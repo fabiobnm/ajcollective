@@ -142,6 +142,8 @@ height: 45vh;
   margin-bottom: 0px;
   padding-bottom: 15px;
   cursor: pointer;
+  user-select: none; /* Evita la selezione */
+  -webkit-user-drag: none; /* Disabilita il trascinamento su browser WebKit */
 }
 
 .sideBar{
