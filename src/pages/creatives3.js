@@ -11,6 +11,8 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [fullscreenImageIndex, setFullscreenImageIndex] = useState(null); // Stato per l'indice dell'immagine fullscreen
   const [projectsLength, setProjectsLength] = useState(0);
+  const [dragged, setDragged] = useState(false); // Stato per il drag
+
 
   // Ref per il div che vogliamo scrollare
     const divRefs = useRef([]); // ✅ Aggiunto array di ref
@@ -18,27 +20,32 @@ export default function Home() {
     const startX = useRef(0);
     const scrollLeft = useRef(0);
     
+  
+    const handleMouseLeave = (e) => {
+      isDragging.current = false;
+      
+    };
+    
     const handleMouseDown = (index, e) => {
       if (!divRefs.current[index]) return;
       isDragging.current = true;
       startX.current = e.clientX - divRefs.current[index].offsetLeft;
       scrollLeft.current = divRefs.current[index].scrollLeft;
-    };
-    
-    const handleMouseLeave = () => {
-      isDragging.current = false;
-    };
-    
-    const handleMouseUp = () => {
-      isDragging.current = false;
+      setDragged(false); // Resettiamo il flag
     };
     
     const handleMouseMove = (index, e) => {
       if (!isDragging.current || !divRefs.current[index]) return;
+      setDragged(true); // Se il mouse si muove, è un drag
       e.preventDefault();
       const x = e.clientX - divRefs.current[index].offsetLeft;
       const scroll = x - startX.current;
       divRefs.current[index].scrollLeft = scrollLeft.current - scroll;
+    };
+    
+    const handleMouseUp = (e) => {
+      isDragging.current = false;
+      setTimeout(() => setDragged(false), 100); // Ritardo per prevenire il click
     };
     
 
@@ -74,7 +81,6 @@ export default function Home() {
     return <p>Error: {error.message}</p>;
   }
 
-  console.log(data);
   
 
   const handleClick = (creativeId) => {
@@ -306,8 +312,12 @@ export default function Home() {
     key={index}
     src={project.cover.url}
     alt={`Image ${index + 1}`}
-    onClick={() => {
-      if(project.fileVideo){
+    onClick={(e) => {
+      if (dragged) {
+        e.stopPropagation(); // Impedisce il click se c'è stato un drag
+        return;
+      }
+      else if(project.fileVideo){
         window.open(project.fileVideo.url, '_blank');// Reindirizza al link
       }
       else if (project.urlLink) {
@@ -336,8 +346,12 @@ export default function Home() {
     key={index+creative.projects.length}
     src={project.thumbnail.url}
     alt={`Image ${index + creative.projects.length + 1}`}
-    onClick={() => {
-      if(project.fileVideo){
+    onClick={(e) => {
+      if (dragged) {
+        e.stopPropagation(); // Impedisce il click se c'è stato un drag
+        return;
+      }
+      else if(project.fileVideo){
         window.open(project.fileVideo.url, '_blank');// Reindirizza al link
       }
        else {
