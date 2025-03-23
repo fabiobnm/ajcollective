@@ -3,6 +3,7 @@ import client from '../lib/apolloClient';
 import { GET_POSTSWinningJob } from '../lib/queries';
 import Sidebar from '../components/Sidebar';
 import React, { useEffect,useState } from 'react';
+import Layout from '@/components/layout';
 
 export default function Home() {
   const { loading, error, data } = useQuery(GET_POSTSWinningJob, { client });
@@ -38,6 +39,7 @@ export default function Home() {
   };
 
   return (
+    <Layout>
     <main style={{ marginTop: '125px' }}>
       <div className='moodFilmsList'>
         {data.winningJobs.map((winningJob) => (
@@ -54,7 +56,6 @@ export default function Home() {
         ))}
       </div>
 
-      <Sidebar />
 
       {/* Player Overlay */}
       {selectedVideo && (
@@ -73,6 +74,7 @@ export default function Home() {
         </div>
       )}
     </main>
+    </Layout>
   );
 }
 

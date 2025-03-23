@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import client from '../lib/apolloClient';
 import { GET_POSTSOrderCreatives } from '../lib/queries';
 import Sidebar from '../components/Sidebar';
+import Layout from '@/components/layout';
 
 export default function Home() {
   const { loading, error, data } = useQuery(GET_POSTSOrderCreatives, { client });
@@ -123,6 +124,7 @@ export default function Home() {
   };
 
   return (
+    <Layout >
     <main style={{ marginTop: '180px', background: '' }}>
       {fullscreenImageIndex !== null && ( // Mostra l'overlay solo se fullscreenImageIndex è impostato
         <div
@@ -369,9 +371,9 @@ export default function Home() {
           </div>
         ))}
       </div>
-      <Sidebar />
       <img className="ajImg2" src="/AJCOLLECTIVE_LOGO.png" />
 
     </main>
+    </Layout>
   );
 }

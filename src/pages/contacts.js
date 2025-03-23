@@ -4,6 +4,7 @@ import client from '../lib/apolloClient';
 import { GET_POSTScontacts } from '../lib/queries';
 import Sidebar from '../components/Sidebar';
 import Link from 'next/link';
+import Layout from '@/components/layout';
 
 export default function Home() {
   const { loading, error, data } = useQuery(GET_POSTScontacts, { client });
@@ -34,8 +35,8 @@ export default function Home() {
   };
 
   return (
+    <Layout>
     <main style={{ marginTop: '0px', background: '#ffa3d7' }}>
-              <Sidebar />
               <div className="contactFirstBlock" >
               <div dangerouslySetInnerHTML={{ __html: data.contacts[0].info.html }}></div>
               </div>
@@ -102,6 +103,7 @@ export default function Home() {
           </div> 
         </div>
     </main>
+    </Layout>
   );
 }
 

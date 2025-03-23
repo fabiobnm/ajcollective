@@ -1,10 +1,9 @@
 import { useEffect, useRef } from "react";
 import { useQuery } from "@apollo/client";
 import client from "../lib/apolloClient";
-import Sidebar from "../components/Sidebar";
+import Layout from "../components/layout";
 import { GET_POSTSHomePage } from "../lib/queries";
 import FooterContact from "@/components/footerContact";
-import Layout from "@/components/layout";
 
 export default function Home() {
   const { loading, error, data } = useQuery(GET_POSTSHomePage, { client });
@@ -25,7 +24,7 @@ export default function Home() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <Layout>
+    <Layout >
     <main style={{ marginTop: "0", overflow: "hidden" }}>
       <div
         ref={divHomeRef}
@@ -90,6 +89,7 @@ export default function Home() {
         ))}
       </div>
 
+      
       <img className="ajImg" src="/AJCOLLECTIVE_LOGO.png" />
     </main>
     </Layout>
