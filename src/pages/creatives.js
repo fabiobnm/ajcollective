@@ -85,9 +85,15 @@ export default function Home() {
   
 
   const handleClick = (creativeId) => {
+    console.log('parte');
+    
     if (selectedCreative === creativeId) {
       setSelectedCreative(null);
+      console.log('uguale');
+      
     } else {
+      console.log('diverso');
+      
       setSelectedCreative(null);
       setTimeout(() => {
         setSelectedCreative(creativeId);
@@ -239,7 +245,7 @@ export default function Home() {
       left: '20px'
     }}
   >
-    VIEW MOOD FILMPIOUFIKJFH
+    VIEW MOOD FILM
   </button>
 ): ''}
 
@@ -287,9 +293,12 @@ export default function Home() {
              onMouseUp={handleMouseUp}
              onMouseMove={(e) => handleMouseMove(creativeIndex, e)}
               style={{
+                opacity: selectedCreative === creativeIndex ? '1' : '0',
                 maxHeight: selectedCreative === creativeIndex ? '400px' : '0',
                 overflow: 'hidden',
-                transition: 'max-height 0.5s',
+                transition: selectedCreative === creativeIndex
+    ? 'max-height 0.5s, opacity 0s'  // Nessuna transizione quando si apre
+    : 'max-height 0.5s, opacity 1s', // Transizione di 1s quando si chiude
                 marginTop: '10px',
                 display: 'flex',
                 gridTemplateRows: 'repeat(1, auto)',
@@ -301,7 +310,7 @@ export default function Home() {
               className="custom-scroll"
             >
 
-              {(creative.info?.html)?<div className='separatorInfo'>
+              {(creative.info?.html && creative.info?.html.trim() !== '')?<div className='separatorInfo'>
 <div className='infoCreative' dangerouslySetInnerHTML={{ __html: creative.info?.html }}></div>
   </div>:''
 

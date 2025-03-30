@@ -24,7 +24,7 @@ export default function Home() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <Layout >
+    <Layout>
     <main style={{ marginTop: "0", overflow: "hidden" }}>
       <div
         ref={divHomeRef}
