@@ -298,7 +298,7 @@ export default function Home() {
                 overflow: 'hidden',
                 transition: selectedCreative === creativeIndex
     ? 'max-height 0.5s, opacity 0s'  // Nessuna transizione quando si apre
-    : 'max-height 0.5s, opacity 1s', // Transizione di 1s quando si chiude
+    : 'max-height 0.5s, opacity 10s', // Transizione di 1s quando si chiude
                 marginTop: '10px',
                 display: 'flex',
                 gridTemplateRows: 'repeat(1, auto)',
