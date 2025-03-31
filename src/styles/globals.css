@@ -361,6 +361,12 @@ height: 45vh;
   display: block;
 }
 
+
+iframe{
+  width:70% !important;
+  height:60% !important;
+}
+
 }
 
 @media screen and (max-width: 950px) and (orientation: landscape) {
