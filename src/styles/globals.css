@@ -158,7 +158,9 @@ height: 45vh;
     padding-right: 45px;
     padding-top: 20px;
     position: fixed;
-    top: 0% 
+    top: 0%;
+    z-index: 99999;
+
 }
 .normeFooter{
   padding-left: 45px;
