@@ -185,7 +185,6 @@ export default function Home() {
               frameBorder="0"
               allow="autoplay; fullscreen"
               allowFullScreen
-              className='popUpImg'
             />
              
                 )
@@ -216,33 +215,7 @@ export default function Home() {
             next
           </button>
          
-          { (fullscreenImageIndex < projectsLength
-                ? data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink
-                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].urlLink) && (
-  <button 
-    onClick={() => {
-      window.open(
-        (fullscreenImageIndex < projectsLength
-            ?data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink
-            : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].urlLink
-        ),
-        '_blank'
-      ); // Reindirizza al link
-    }}
-    
-    style={{
-      background: fullscreenImageIndex < projectsLength
-        ?'white'
-        :'#ffa3d7',
-      position: 'fixed',
-      bottom: '20px',
-      right: '20px'
-    }}
-  > {fullscreenImageIndex < projectsLength
-    ?'VIEW INTERACTIVE TREATMENT'
-    :'VIEW MOOD FILM'}
-  </button>
-)}
+
 
 { ((fullscreenImageIndex >= projectsLength &&  data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.fileVideo?.url)) ? (
     <button 

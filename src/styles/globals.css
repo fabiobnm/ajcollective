@@ -45,6 +45,11 @@ h1, p{
   width: 100%;
 }
 
+iframe{
+  width:100% !important;
+  height:60% !important;
+}
+
 .ajImg2{
   position: fixed;
   bottom: 10px;
