@@ -169,27 +169,14 @@ export default function Home() {
             prev
           </button>
 
-
-          {fullscreenImageIndex < projectsLength
-                ? 
-                (<img className='popUpImg'
-                src={data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].cover.url}
+          <img className='popUpImg'
+                src={fullscreenImageIndex < projectsLength
+                ? data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].cover.url
+                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].thumbnail.url
+                }
                alt="Fullscreen"
               style={{ maxWidth: '90%', maxHeight: '90%' }}
-          />)
-                
-                : (
-                    <iframe
-              src={data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.urlLink}
-           
-              frameBorder="0"
-              allow="autoplay; fullscreen"
-              allowFullScreen
-            />
-             
-                )
-                }
-          
+          />
 
           <button
             onClick={(e) => {
@@ -214,16 +201,16 @@ export default function Home() {
           >
             next
           </button>
-
-            { (fullscreenImageIndex < projectsLength
+         
+          { (fullscreenImageIndex < projectsLength
                 ? data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink
-                : '') && (
+                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].urlLink) && (
   <button 
     onClick={() => {
       window.open(
         (fullscreenImageIndex < projectsLength
             ?data.creativesOrders[0].creative[selectedCreative].projects[fullscreenImageIndex].urlLink
-            : ''
+            : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength].urlLink
         ),
         '_blank'
       ); // Reindirizza al link
@@ -239,11 +226,9 @@ export default function Home() {
     }}
   > {fullscreenImageIndex < projectsLength
     ?'VIEW INTERACTIVE TREATMENT'
-    :''}
+    :'VIEW MOOD FILM'}
   </button>
 )}
-         
-
 
 { ((fullscreenImageIndex >= projectsLength &&  data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.fileVideo?.url)) ? (
     <button 
@@ -343,7 +328,12 @@ export default function Home() {
         e.stopPropagation(); // Impedisce il click se c'è stato un drag
         return;
       }
-       else {
+      else if(project.fileVideo){
+        window.open(project.fileVideo.url, '_blank');// Reindirizza al link
+      }
+      else if (project.urlLink) {
+        window.open(project.urlLink, '_blank');// Reindirizza al link
+      } else {
         handleImageClick(index, creative.projects.length ); // Esegui l'azione esistente
       }
     }}
