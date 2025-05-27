@@ -109,6 +109,8 @@ export default function Home() {
   };
 
   const handleImageClick = (index, projectsLength) => {
+    console.log('index'+ index);
+    
     setFullscreenImageIndex(index);
     setProjectsLength(projectsLength); // Salva il valore della lunghezza
     console.log('length'+projectsLength);

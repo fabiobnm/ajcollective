@@ -88,7 +88,7 @@ iframe{
   transform: rotate(-90deg)
 }
 .contactSecondBlock{
-height: 45vh;
+height: auto;
 }
 .contactThirdBlock{
   height: 45vh;
@@ -450,7 +450,7 @@ iframe{
   }
   
   .contactSecondBlock {
-    height: 120vh;
+    height: auto;
 }
 .rateColonne{
   height: 105vH;

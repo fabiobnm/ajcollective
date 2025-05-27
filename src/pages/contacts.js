@@ -42,9 +42,11 @@ export default function Home() {
               </div>
         
        
-        <div className="contactSecondBlock" style={{paddingTop:'10px',borderTop:'1px solid black'}}>
+        <div className="contactSecondBlock" style={{paddingTop:'10px'}}>
         <div className='normeFooter'>
-        <h1 className='voiceName'>2024 rates</h1>
+        <button className='voiceName' style={{border:'1px solid black', width:'auto', fontSize:'12px', paddingInline:'25px'}}
+        onClick={() => window.open(data.contacts[0].ratePdf.url, '_blank')}>{data.contacts[0].buttonRateText}</button>
+           {/* 
             <div className='divRate'>
                 
                 <div className="rateColonne">
@@ -80,13 +82,13 @@ export default function Home() {
                 </div>
 
                
-            </div>
+            </div> This is a JSX comment */}
           </div> 
 
         </div>
 
         
-        <div style={{paddingTop:'10px',borderTop:'1px solid black',paddingBottom:'80px'}}>
+        <div style={{paddingTop:'10px',paddingBottom:'80px'}}>
         <div className='normeFooter'>
         <h1 className='voiceName'>cancellation Fees</h1>
             <p className='footerVoice'>{data.contacts[0].cancellationFees}</p>

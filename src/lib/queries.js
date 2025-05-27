@@ -75,21 +75,8 @@ export const GET_POSTScontacts = gql`
     info{
     html 
     raw}
-    firstRate{
-    markdown
-    html 
-    raw}
-    secondRate{
-    markdown
-    html 
-    raw}
-    thirdRate{
-    markdown
-    html 
-    raw}
-    fourthRate{
-    html 
-    raw}
+    buttonRateText
+    ratePdf{url}
     cancellationFees
     hours
     payment
