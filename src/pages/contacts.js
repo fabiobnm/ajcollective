@@ -44,7 +44,7 @@ export default function Home() {
        
         <div className="contactSecondBlock" style={{paddingTop:'10px'}}>
         <div className='normeFooter'>
-        <button className='voiceName' style={{border:'1px solid black', width:'auto', fontSize:'12px', paddingInline:'25px'}}
+        <button className='buttonRates'
         onClick={() => window.open(data.contacts[0].ratePdf.url, '_blank')}>{data.contacts[0].buttonRateText}</button>
            {/* 
             <div className='divRate'>
@@ -87,7 +87,7 @@ export default function Home() {
 
         </div>
 
-        
+         {/* 
         <div style={{paddingTop:'10px',paddingBottom:'80px'}}>
         <div className='normeFooter'>
         <h1 className='voiceName'>cancellation Fees</h1>
@@ -103,7 +103,7 @@ export default function Home() {
           <h1  className='voiceName'>payment</h1>
           <p className='footerVoice'>{data.contacts[0].payment}</p>
           </div> 
-        </div>
+        </div>This is a JSX comment */}
     </main>
     </Layout>
   );

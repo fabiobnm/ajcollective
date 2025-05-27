@@ -65,6 +65,13 @@ iframe{
   margin-bottom: 70px;
   color:black;
 }
+.buttonRates{
+  border: 1px solid black;
+    width: auto;
+    font-size: 12px;
+    padding-inline: 25px;
+    text-transform: uppercase;
+}
 .treatmentSeparator{
   position: absolute;
   left: 0;
@@ -338,6 +345,9 @@ height: auto;
     width: auto;
     margin-bottom: 20px;
   }
+  .buttonRates{
+    width: 100%;
+}
   .divRate{
     display: block;
     width: 75%;
