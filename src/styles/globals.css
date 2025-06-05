@@ -486,6 +486,7 @@ video{max-width: 70%;}
 }
 .separatorDiv{
     height: 230px;
+    min-width: 200px;
 }
     
 .rigaRate{
