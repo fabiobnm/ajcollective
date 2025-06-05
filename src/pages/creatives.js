@@ -156,19 +156,8 @@ export default function Home() {
             onClick={(e) => {
               e.stopPropagation();
               handlePrevImage(data.creativesOrders[0].creative[selectedCreative].projects);
-            }}
-            style={{
-              position: 'absolute',
-              left: '10px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'none',
-              color:'white',              
-              border: 'none',
-              cursor: 'pointer',
-              padding: '10px',
-              zIndex: 1002,
-            }}
+            }} 
+            className='buttonPrev'
           >
             prev
           </button>
@@ -201,19 +190,7 @@ export default function Home() {
                 :(data.creativesOrders[0].creative[selectedCreative].moodFilms, data.creativesOrders[0].creative[selectedCreative].projects)
             );
             }}
-            style={{
-              position: 'absolute',
-              right: '10px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'none',
-              color:'white',
-              border: 'none',
-              cursor: 'pointer',
-              padding: '10px',
-              zIndex: 1002,
-            }}
-          >
+             className='buttonNext' >
             next
           </button>
 

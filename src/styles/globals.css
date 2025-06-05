@@ -45,6 +45,32 @@ h1, p{
   width: 100%;
 }
 
+.buttonPrev{
+      position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1002;
+}
+
+.buttonNext{
+  position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1002;
+}
+
 iframe{
   width:100% !important;
  /* height:60% !important; */
@@ -366,6 +392,31 @@ video{max-width: 70%;}
   
   }
 
+  .buttonPrev{
+      position: absolute;
+    left: 10px;
+    top: 90%;
+    transform: translateY(-50%);
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1002;
+}
+
+.buttonNext{
+  position: absolute;
+    right: 10px;
+    top: 90%;
+    transform: translateY(-50%);
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1002;
+}
   .footerVoice{
     margin-top: 40px;
   }
