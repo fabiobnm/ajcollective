@@ -444,8 +444,8 @@ video{max-width: 70%;}
 
 
 iframe{
-  width:70% !important;
-  height:60% !important;
+ /* width:70% !important;
+  height:60% !important; */
 }
 
 }
