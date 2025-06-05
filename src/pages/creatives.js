@@ -4,6 +4,8 @@ import client from '../lib/apolloClient';
 import { GET_POSTSOrderCreatives } from '../lib/queries';
 import Sidebar from '../components/Sidebar';
 import Layout from '@/components/layout';
+import ReactPlayer from 'react-player';
+
 
 export default function Home() {
   const { loading, error, data } = useQuery(GET_POSTSOrderCreatives, { client });
@@ -179,17 +181,15 @@ export default function Home() {
                alt="Fullscreen"
               style={{ maxWidth: '90%', maxHeight: '90%' }}
           />)
-                
-                : (
-                    <iframe
-              src={data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.urlLink}
-           
-              frameBorder="0"
-              allow="autoplay; fullscreen"
-              allowFullScreen
-            />
-             
-                )
+                : data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.urlLink ?  (
+                   <ReactPlayer
+        url={data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.urlLink}
+        controls/> ) : (
+          <video controls className="carousel-video">
+                <source src={data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.fileVideo?.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+        )
                 }
           
 
@@ -245,9 +245,9 @@ export default function Home() {
   </button>
 )}
          
-
-
-{ ((fullscreenImageIndex >= projectsLength &&  data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.fileVideo?.url)) ? (
+{/*
+ 
+  { ((fullscreenImageIndex >= projectsLength &&  data.creativesOrders[0].creative[selectedCreative].moodFilms[fullscreenImageIndex - projectsLength]?.fileVideo?.url)) ? (
     <button 
     onClick={() => {
       window.open(
@@ -266,6 +266,7 @@ export default function Home() {
   </button>
 ): ''}
 
+*/}
 
         </div>
       )}
@@ -374,9 +375,7 @@ export default function Home() {
         e.stopPropagation(); // Impedisce il click se c'è stato un drag
         return;
       }
-      else if(project.fileVideo){
-        window.open(project.fileVideo.url, '_blank');// Reindirizza al link
-      }
+   
        else {
         handleImageClick(index + creative.projects.length, creative.projects.length  ); // Esegui l'azione esistente
       }

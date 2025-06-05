@@ -47,7 +47,7 @@ h1, p{
 
 iframe{
   width:100% !important;
-  height:60% !important;
+ /* height:60% !important; */
 }
 
 .ajImg2{
@@ -104,6 +104,8 @@ height: auto;
 .enquire{
   font-size: 12px;
 }
+
+video{max-width: 70%;}
 
 /*     */
 .modal-overlay {
