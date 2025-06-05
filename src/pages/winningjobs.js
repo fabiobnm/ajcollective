@@ -43,7 +43,7 @@ export default function Home() {
     <main style={{ marginTop: '125px' }}>
       <div className='moodFilmsList'>
         {data.winningJobs.map((winningJob) => (
-          <div key={winningJob.id} style={{ marginBottom: '20px' }}>
+          <div key={winningJob.id} style={{ marginBottom: '0px' }}>
             <img
               className='coverMoodFilm'
               src={winningJob.thumbnail.url}

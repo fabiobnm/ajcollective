@@ -301,7 +301,7 @@ video{max-width: 70%;}
 }
 .moodFilmsList{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1%;
   padding-left: 45px;
   padding-right: 45px;
